@@ -12,7 +12,7 @@
 
   INCLUDE       =       -I./include
 
-  SRC           =	main.cpp
+  SRC           =	menu.cpp
 
   OBJ           =       $(SRC:.cpp=.o)
   OBJMAIN       =       $(MAIN:.cpp=.o)
