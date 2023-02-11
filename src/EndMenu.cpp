@@ -44,9 +44,6 @@ void EndMenu::loadScene(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
-    //Music
-    set_music(this->_music, "sfx/end/end.ogg", 10);
-    _music.play();
 
     if (!this->_font.loadFromFile("sfx/menu/gunplay-3d.ttf"))
         error("Error loading font");
@@ -73,7 +70,12 @@ void EndMenu::run(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
-    //this->loadScene(NULL, NULL);
+    static bool tmp = false;
+    if (tmp == false) {
+        set_music(this->_music, "sfx/end/end.ogg", 10);
+        _music.play();
+        tmp = true;
+    }
     _window.draw(_background);
     _window.draw(_text);
     if (_music.getStatus() == sf::SoundSource::Stopped)

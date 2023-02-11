@@ -68,10 +68,6 @@ void MainMenu::loadScene(SceneManager *manager, void *data)
     (void)manager;
     (void)data;
 
-    //Music
-    set_music(this->_music, "sfx/menu/menu_drill.ogg", 10);
-    this->_music.play();
-
     //Font
     if (!this->_font.loadFromFile("sfx/menu/gunplay-3d.ttf"))
         error("Error loading font");
@@ -138,6 +134,12 @@ void MainMenu::unloadScene(SceneManager *manager, void *data)
 void MainMenu::run(SceneManager *manager, void *data)
 {
     (void)data;
+    static bool tmp = false;
+    if (tmp == false) {
+        set_music(this->_music, "sfx/menu/menu_drill.ogg", 10);
+        this->_music.play();
+        tmp = true;
+    }
 
     mouse_activity(this->_window, this->_event, this->_spriteDraw[2], this->_spriteDraw[1], this->_easter_egg, manager);
 
