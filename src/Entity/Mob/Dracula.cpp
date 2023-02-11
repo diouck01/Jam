@@ -16,5 +16,5 @@ Dracula::Dracula()
     if (!buffer.loadFromFile("sfx/mob/Vampire.ogg"))
         throw LoadingError("Cannot load the file \"Dracula.ogg\".");
     sound.setBuffer(buffer);
-    _sound.push_back(sound);
+    _sound = sound;
 }

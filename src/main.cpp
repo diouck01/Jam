@@ -1,4 +1,5 @@
 #include "menu.hpp"
+#include "Player.hpp"
 
 int main(void)
 {
@@ -72,8 +73,9 @@ int main(void)
     sf::Sound sound;
     sound.setBuffer(buff_sound);
     sound.setVolume(30);
+    Player ben;
     
-    int i = 0;
+    int i = 1;
 
     while (window.isOpen()) {
         window.pollEvent(event);
@@ -85,12 +87,18 @@ int main(void)
         mouse_activity(i, event, spriteDraw[1], spriteDraw[2], sound);
 
         window.clear();
+        if (i != 0)
+            music.stop();
         if (i == 0)
             drawWindow(window, spriteDraw, textDraw);
+        if (i == 1) {
+            if (ben.getSound()->getStatus() == sf::SoundSource::Stopped && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+                ben.getSound()->play();
+        }
         window.display();
 
-        fps.capFramerate();
-        fps.printLog();
+        // fps.capFramerate();
+        // fps.printLog();
     }
     return 0;
 }
