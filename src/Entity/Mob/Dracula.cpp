@@ -9,10 +9,11 @@
 
 Dracula::Dracula()
 {
+    _name = "Dracula";
     sf::SoundBuffer buffer;
     sf::Sound sound;
 
-    if (!buffer.loadFromFile("Vampire.ogg"))
+    if (!buffer.loadFromFile("sfx/mob/Vampire.ogg"))
         throw LoadingError("Cannot load the file \"Dracula.ogg\".");
     sound.setBuffer(buffer);
     _sound.push_back(sound);

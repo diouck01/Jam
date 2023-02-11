@@ -28,9 +28,16 @@ public:
     void setVectorNorm(sf::Vector2f &vect);
     void updateAngle(void);
 
+    void setBufferSound(std::string son);
+    void setSoundPos(sf::Vector2f pos) {_sound.begin()->setPosition(pos.x, pos.y, pos.y); _sound.begin()->setMinDistance(20.f);};
+
+
 protected:
     sf::Vector2f _position;
     sf::Vector2f _movement;
     double _angle = 0;
     double _speed = 5;
+    sf::SoundBuffer _buff_sound;
+    std::list<sf::Sound> _sound;
+    std::string _name;
 };

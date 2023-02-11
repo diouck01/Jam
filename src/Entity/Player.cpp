@@ -9,6 +9,15 @@
 
 Player::Player()
 {
+    _name = "Ben Underwood";
+    _listener.setGlobalVolume(50.f);
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
+
+    if (!buffer.loadFromFile("sfx/death/mc_ougth.ogg"))
+        throw LoadingError("Cannot load the file \"player heart.ogg\".");
+    sound.setBuffer(buffer);
+    _sound.push_back(sound);
 }
 
 Player::~Player()
