@@ -19,19 +19,16 @@ SceneManager::~SceneManager()
 void SceneManager::addMenu(std::string menuName, IScene *scene)
 {
     _sceneList.insert({menuName, scene});
+    scene->loadScene(this, NULL);
 }
 
 void SceneManager::display(void *data)
 {
-    static bool tmp = false;
+    std::map<std::string, IScene*>::iterator end = _sceneList.find(_previousScene);
+    if (end != _sceneList.end())
+        _sceneList.find(_previousScene)->second->unloadScene(this, data);
     IScene *it = _sceneList.find(_currentScene)->second;
-    if (tmp == false) {
-        std::map<std::string, IScene*>::iterator end = _sceneList.find(_previousScene);
-        if (end != _sceneList.end())
-            _sceneList.find(_previousScene)->second->unloadScene(this, data);
-        it->loadScene(NULL, NULL);
-        tmp = true;
-    }
+    it->loadScene(NULL, NULL);
     it->run(this, data);
 }
 
