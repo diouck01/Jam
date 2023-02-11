@@ -12,7 +12,11 @@
 >>>>>>> 26217ff ([add]son perso)
 =======
 #include "MainMenu.hpp"
+<<<<<<< HEAD
 >>>>>>> 2785aa3 ([add]menumanager)
+=======
+#include "EndMenu.hpp"
+>>>>>>> 8d864be ([add]End menu)
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -46,13 +50,8 @@ int main(void)
 =======
     std::vector<sf::Sprite> spriteDraw;
     std::vector<sf::Text> textDraw;
-    MainMenu menu(window, event);
-    // menuConstructor(spriteDraw, textDraw);
-     //Music
-    sf::Music music;
-    set_music(music, "sfx/menu/menu_drill.ogg", 10);
-    music.play();
-
+    //MainMenu menu(window, event);
+    EndMenu menu(window);
     
 <<<<<<< HEAD
 <<<<<<< HEAD
