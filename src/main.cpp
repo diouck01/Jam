@@ -1,6 +1,7 @@
 #include "menu.hpp"
 #include "Player.hpp"
 #include "MainMenu.hpp"
+#include "EndMenu.hpp"
 
 int main(void)
 {
@@ -9,13 +10,8 @@ int main(void)
     sf::Event event;
     std::vector<sf::Sprite> spriteDraw;
     std::vector<sf::Text> textDraw;
-    MainMenu menu(window, event);
-    // menuConstructor(spriteDraw, textDraw);
-     //Music
-    sf::Music music;
-    set_music(music, "sfx/menu/menu_drill.ogg", 10);
-    music.play();
-
+    //MainMenu menu(window, event);
+    EndMenu menu(window);
     
     menu.loadScene(NULL, NULL);
     while (window.isOpen()) {
