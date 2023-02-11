@@ -7,14 +7,24 @@
 
 #pragma once
 #include <vector>
-#include <IMob.hpp>
+#include <ostream>
+#include <IEntity.hpp>
 
 class Map {
     public:
-        Map(int x, int y);
+        Map(unsigned int width, unsigned int height);
         ~Map();
+
+        unsigned int random_empty_position();
+        unsigned int getWidth() const;
+        unsigned int getHeight() const;
+        int &operator[](unsigned int i);
+        int operator[](unsigned int i) const;
     private:
-        std::list<IMob*> _mobs;
-        std::list<int> _tiles;
-        sf::Vector2f _size;
+        std::list<IEntity*> _mobs;
+        unsigned int _width;
+        unsigned int _height;
+        int *_tiles;
 };
+
+std::ostream &operator<<(std::ostream &os, const Map map);
