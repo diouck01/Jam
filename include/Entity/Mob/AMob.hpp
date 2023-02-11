@@ -23,7 +23,6 @@ class AMob: public AEntity {
         void incrementSoundTrigger(int soundTrigger);
 
     protected:
-        std::list<sf::Sound> _sound;
         sf::Vector2f _target;
         int _soundTriggerMax = 3;
         int _soundTrigger = 0;
