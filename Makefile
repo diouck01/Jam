@@ -22,7 +22,7 @@ INCLUDE_DIRS_REC = include/
 INCLUDE_DIRS =
 
 #FLAGS
-FLAGS = -g -g3 -Wextra -Wall -Werror -W -std=c++20 -lsfml-window -lsfml-system
+FLAGS = -g -g3 -Wextra -Wall -Werror -W -std=c++20 -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
 #LIB
 LIB_DIRS =
