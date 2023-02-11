@@ -65,7 +65,7 @@ void AEntity::move(double x, double y)
 
 void AEntity::move(void)
 {
-    this->move(this->_position);   
+    this->move(this->_movement);   
 }
 
 int AEntity::distance(IEntity &entity) const
@@ -89,8 +89,10 @@ void AEntity::setVectorNorm(sf::Vector2f &vect)
 {
     double len = this->getVectorLength(vect);
 
-    vect.x /= len;
-    vect.y /= len;
+    if (len != 0) {
+        vect.x /= len;
+        vect.y /= len;
+    }
 }
 
 void AEntity::updateAngle(void)
