@@ -16,7 +16,11 @@
 >>>>>>> 2785aa3 ([add]menumanager)
 =======
 #include "EndMenu.hpp"
+<<<<<<< HEAD
 >>>>>>> 8d864be ([add]End menu)
+=======
+#include "SceneManager.hpp"
+>>>>>>> 3eee9ce ([add]scenemanager + bug display)
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -36,6 +40,7 @@ int main(void)
     sf::RenderWindow window(sf::VideoMode(1280, 720), "DardDesVilles");
     Framerate fps;
     sf::Event event;
+<<<<<<< HEAD
 <<<<<<< HEAD
     Map map(20, 20);
     Player p(map);
@@ -69,6 +74,16 @@ int main(void)
     std::cout << map << std::endl;
 =======
 >>>>>>> c6ef58e ([EDIT] Fix up a memory crash caused by mouse_activity)
+=======
+    MainMenu mainmenu(window, event);
+    //mainmenu.loadScene(NULL, NULL);
+    EndMenu endmenu(window);
+    //endmenu.loadScene(NULL, NULL);
+    SceneManager scene;
+    scene.addMenu("MainMenu", &mainmenu);
+    scene.addMenu("EndMenu", &endmenu);
+
+>>>>>>> 3eee9ce ([add]scenemanager + bug display)
     while (window.isOpen()) {
         window.pollEvent(event);
         if (event.type == sf::Event::Closed)
@@ -116,8 +131,12 @@ int main(void)
 =======
         
         window.clear();
+<<<<<<< HEAD
         menu.run(NULL, NULL);
 >>>>>>> c6ef58e ([EDIT] Fix up a memory crash caused by mouse_activity)
+=======
+        scene.display(NULL);
+>>>>>>> 3eee9ce ([add]scenemanager + bug display)
         window.display();
 
         // fps.capFramerate();

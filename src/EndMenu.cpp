@@ -73,6 +73,7 @@ void EndMenu::run(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
+    //this->loadScene(NULL, NULL);
     _window.draw(_background);
     _window.draw(_text);
     if (_music.getStatus() == sf::SoundSource::Stopped)

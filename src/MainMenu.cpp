@@ -6,6 +6,7 @@
 */
 
 #include "MainMenu.hpp"
+#include "SceneManager.hpp"
 
 MainMenu::MainMenu(sf::RenderWindow &window, sf::Event &event)
 : _window(window), _event(event)
@@ -22,7 +23,7 @@ void error(std::string str)
     exit(1);
 }
 
-void mouse_activity(sf::RenderWindow &window, sf::Event event, sf::Sprite button, sf::Sprite button2, sf::Sound &sound)
+void mouse_activity(sf::RenderWindow &window, sf::Event event, sf::Sprite button, sf::Sprite button2, sf::Sound &sound, SceneManager *manager)
 {
     if (event.type == sf::Event::MouseButtonPressed)
     {
@@ -33,7 +34,7 @@ void mouse_activity(sf::RenderWindow &window, sf::Event event, sf::Sprite button
         if (event.mouseButton.x > button2.getPosition().x && event.mouseButton.x < button2.getPosition().x + button2.getTexture()->getSize().x && 
             event.mouseButton.y > button2.getPosition().y && event.mouseButton.y < button2.getPosition().y + button2.getTexture()->getSize().y &&
             event.mouseButton.button == sf::Mouse::Left)
-            return; //ici changer de scene
+            manager->changeMenu("EndMenu"); //ici changer de scene
         if (event.mouseButton.x > 950 && event.mouseButton.x < 990 &&
             event.mouseButton.y > 580 && event.mouseButton.y < 590 &&
             event.mouseButton.button == sf::Mouse::Left && sound.getStatus() == sf::SoundSource::Stopped) {
@@ -136,10 +137,9 @@ void MainMenu::unloadScene(SceneManager *manager, void *data)
 
 void MainMenu::run(SceneManager *manager, void *data)
 {
-    (void)manager;
     (void)data;
 
-    mouse_activity(this->_window, this->_event, this->_spriteDraw[2], this->_spriteDraw[1], this->_easter_egg);
+    mouse_activity(this->_window, this->_event, this->_spriteDraw[2], this->_spriteDraw[1], this->_easter_egg, manager);
 
     for (std::size_t i = 0; i < this->_spriteDraw.size(); ++i) {
         this->_window.draw(this->_spriteDraw[i]);
