@@ -6,6 +6,9 @@
 */
 
 #include "Map.hpp"
+#include <Zombie.hpp>
+#include <Clacker.hpp>
+#include <Dracula.hpp>
 
 void fill_around(Map &map, unsigned int i, int value)
 {
@@ -19,7 +22,7 @@ void fill_around(Map &map, unsigned int i, int value)
         map[i - width - 1] = value;
 }
 
-Map::Map(unsigned int width, unsigned int height) : _mobs() ,_width(width), _height(height), _tiles(new int[width * height])
+Map::Map(unsigned int width, unsigned int height) : _width(width), _height(height), _tiles(new int[width * height])
 {
     unsigned int i;
 
@@ -30,11 +33,22 @@ Map::Map(unsigned int width, unsigned int height) : _mobs() ,_width(width), _hei
     for (i = 0; i != width * height; i++)
         if (_tiles[i] == 1)
             fill_around(*this, i, 2);
-    
+    generate_mobs();
 }
 
 Map::~Map()
 {
+}
+
+void Map::generate_mobs(unsigned int zombies, unsigned int clackers, unsigned int draculas)
+{
+    unsigned int i;
+    for (i = 0; i != zombies; i++)
+        _mobs.push_back(new Zombie(*this));
+    for (i = 0; i != clackers; i++)
+        _mobs.push_back(new Clacker(*this));
+    for (i = 0; i != draculas; i++)
+        _mobs.push_back(new Dracula(*this));
 }
 
 int &Map::operator[](unsigned int i)
@@ -85,6 +99,8 @@ std::ostream &operator<<(std::ostream &os, const Map map)
             os << ' ';
         if (map[i] == 3)
             os << "\033[31mo\033[0m";
+        else if (map[i] == 4)
+            os << "\033[33mo\033[0m";
         else if (map[i] != 0 && map[i] != 3)
             os << "#";
         else

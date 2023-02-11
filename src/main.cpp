@@ -249,7 +249,7 @@ int main(void)
 
     unsigned int pos = map.random_empty_position();
     
-    map[pos] = 3;
+    map[pos] = 4;
     std::cout << map << std::endl;
     return (0);
 }

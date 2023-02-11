@@ -10,6 +10,8 @@
 #include "IEntity.hpp"
 #include "Map.hpp"
 
+class Map;
+
 class AEntity: public IEntity {
 public:
     AEntity(Map &map);
