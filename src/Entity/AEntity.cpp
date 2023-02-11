@@ -93,11 +93,3 @@ void AEntity::updateAngle(void)
         return;
     this->_angle = acos(this->getVectorDot(this->_movement, refAngle) / len);
 }
-
-// void AEntity::setBufferSound(std::string son)
-// {
-//     if (!_buff_sound.loadFromFile(son)){
-//         std::cout << "Error loading sond" << _name << std::endl;
-//         exit(1);
-//     }
-// }
