@@ -7,10 +7,12 @@
 
 #include "AEntity.hpp"
 
-AEntity::AEntity()
+AEntity::AEntity(Map &map) : _map(map)
 {
-    this->_position.x = 0;
-    this->_position.y = 0;
+    unsigned int i = map.random_empty_position();
+
+    this->_position.x = i % map.getWidth();
+    this->_position.y = i % map.getHeight();
     this->_movement.x = 0;
     this->_movement.y = 0;
 }
@@ -63,6 +65,13 @@ void AEntity::move(double x, double y)
 void AEntity::move(void)
 {
     this->move(this->_position);   
+}
+
+int AEntity::distance(IEntity &entity) const
+{
+    sf::Vector2f epos = entity.getPosition();
+
+    return (sqrt((epos.x - _position.x ) * (epos.x - _position.x) + (epos.y - _position.y) * (epos.y - _position.y)));
 }
 
 double AEntity::getVectorLength(sf::Vector2f vect) const

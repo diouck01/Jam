@@ -8,10 +8,11 @@
 #pragma once
 
 #include "IEntity.hpp"
+#include "Map.hpp"
 
 class AEntity: public IEntity {
 public:
-    AEntity();
+    AEntity(Map &map);
     ~AEntity();
 
     sf::Vector2f getPosition() const;
@@ -22,6 +23,7 @@ public:
     void move(sf::Vector2f position);
     void move(double x, double y);
     void move(void);
+    int distance(IEntity &entity) const;
 
     double getVectorLength(sf::Vector2f vect) const;
     double getVectorDot(sf::Vector2f v1, sf::Vector2f v2) const;
@@ -29,6 +31,7 @@ public:
     void updateAngle(void);
 
 protected:
+    Map &_map;
     sf::Vector2f _position;
     sf::Vector2f _movement;
     double _angle = 0;

@@ -18,10 +18,11 @@ class Map {
         unsigned int random_empty_position();
         unsigned int getWidth() const;
         unsigned int getHeight() const;
+        unsigned int getSize() const;
         int &operator[](unsigned int i);
         int operator[](unsigned int i) const;
     private:
-        std::list<IEntity*> _mobs;
+        IEntity *_mobs;
         unsigned int _width;
         unsigned int _height;
         int *_tiles;

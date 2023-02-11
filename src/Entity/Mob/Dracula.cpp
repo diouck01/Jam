@@ -7,7 +7,7 @@
 
 #include "Mob/Dracula.hpp"
 
-Dracula::Dracula()
+Dracula::Dracula(Map &map) : AMob(map)
 {
     sf::SoundBuffer buffer;
     sf::Sound sound;

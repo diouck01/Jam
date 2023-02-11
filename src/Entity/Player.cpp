@@ -7,7 +7,7 @@
 
 #include "Player.hpp"
 
-Player::Player()
+Player::Player(Map &map) : AEntity(map)
 {
 }
 

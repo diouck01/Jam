@@ -7,7 +7,7 @@
 
 #include "Mob/Clacker.hpp"
 
-Clacker::Clacker()
+Clacker::Clacker(Map &map) : AMob(map)
 {
     sf::SoundBuffer buffer;
     sf::Sound sound;

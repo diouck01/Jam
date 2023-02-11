@@ -246,7 +246,6 @@ int main(void)
 {
     srand(time(nullptr));
     Map map(20, 20);
-    
 
     unsigned int pos = map.random_empty_position();
     

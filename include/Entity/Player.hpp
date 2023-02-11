@@ -13,7 +13,7 @@
 
 class Player: public AEntity {
 public:
-    Player();
+    Player(Map &map);
     ~Player();
 
     void getInput(void);

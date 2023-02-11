@@ -11,5 +11,5 @@
 
 class Zombie : public AMob{
     public:
-        Zombie();
+        Zombie(Map &map);
 };
