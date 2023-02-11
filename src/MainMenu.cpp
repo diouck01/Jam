@@ -7,8 +7,8 @@
 
 #include "MainMenu.hpp"
 
-MainMenu::MainMenu(sf::RenderWindow &window)
-: _window(window)
+MainMenu::MainMenu(sf::RenderWindow &window, sf::Event &event)
+: _window(window), _event(event)
 {
 }
 
@@ -22,18 +22,18 @@ void error(std::string str)
     exit(1);
 }
 
-void mouse_activity(int &i, sf::Event event, sf::Sprite button, sf::Sprite button2, sf::Sound &sound)
+void mouse_activity(sf::RenderWindow &window, sf::Event event, sf::Sprite button, sf::Sprite button2, sf::Sound &sound)
 {
     if (event.type == sf::Event::MouseButtonPressed)
     {
         if (event.mouseButton.x > button.getPosition().x && event.mouseButton.x < button.getPosition().x + button.getTexture()->getSize().x && 
             event.mouseButton.y > button.getPosition().y && event.mouseButton.y < button.getPosition().y + button.getTexture()->getSize().y &&
             event.mouseButton.button == sf::Mouse::Left)
-            i = 1;
+            window.close();
         if (event.mouseButton.x > button2.getPosition().x && event.mouseButton.x < button2.getPosition().x + button2.getTexture()->getSize().x && 
             event.mouseButton.y > button2.getPosition().y && event.mouseButton.y < button2.getPosition().y + button2.getTexture()->getSize().y &&
             event.mouseButton.button == sf::Mouse::Left)
-            i = 2;
+            return;
         if (event.mouseButton.x > 950 && event.mouseButton.x < 990 && 
             event.mouseButton.y > 580 && event.mouseButton.y < 590 &&
             event.mouseButton.button == sf::Mouse::Left) {
@@ -127,6 +127,7 @@ void MainMenu::loadScene(SceneManager *manager, void *data)
         error("Error loading easter_egg");
     this->_easter_egg.setBuffer(buff_sound);
     this->_easter_egg.setVolume(30);
+
 }
 
 
@@ -134,6 +135,7 @@ void MainMenu::unloadScene(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
+    this->_music.stop();
 }
 
 void MainMenu::run(SceneManager *manager, void *data)
@@ -141,10 +143,15 @@ void MainMenu::run(SceneManager *manager, void *data)
     (void)manager;
     (void)data;
 
+    mouse_activity(this->_window, this->_event, this->_spriteDraw[1], this->_spriteDraw[2], this->_easter_egg);
+
     for (std::size_t i = 0; i < this->_spriteDraw.size(); ++i) {
         this->_window.draw(this->_spriteDraw[i]);
     }
     for (std::size_t i = 0; i < this->_textDraw.size(); ++i) {
         this->_window.draw(this->_textDraw[i]);
     }
+    if (ben.getSound()->getStatus() == sf::SoundSource::Stopped && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+            ben.getSound()->play();
+    
 }

@@ -14,10 +14,11 @@
 #include <vector>
 
 #include "IScene.hpp"
+#include "Player.hpp"
 
 class MainMenu: public IScene {
 public:
-    MainMenu(sf::RenderWindow &window);
+    MainMenu(sf::RenderWindow &window, sf::Event &event);
     ~MainMenu();
 
     void loadScene(SceneManager *manager, void *data);
@@ -25,11 +26,13 @@ public:
     void run(SceneManager *manager, void *data);
 
     sf::Sound _easter_egg;
+    Player ben;
 protected:
 private:
+    sf::RenderWindow &_window;
+    sf::Event &_event;
     sf::Music _music;
     sf::Font _font;
     std::vector<sf::Sprite> _spriteDraw; 
     std::vector<sf::Text> _textDraw;
-    sf::RenderWindow &_window;
 };

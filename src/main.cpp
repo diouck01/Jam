@@ -46,15 +46,13 @@ int main(void)
 =======
     std::vector<sf::Sprite> spriteDraw;
     std::vector<sf::Text> textDraw;
-    MainMenu menu(window);
+    MainMenu menu(window, event);
     // menuConstructor(spriteDraw, textDraw);
      //Music
     sf::Music music;
     set_music(music, "sfx/menu/menu_drill.ogg", 10);
     music.play();
 
-    //easter_egg
-    Player ben;
     
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -63,21 +61,29 @@ int main(void)
 =======
 =======
     menu.loadScene(NULL, NULL);
+<<<<<<< HEAD
 >>>>>>> 2785aa3 ([add]menumanager)
     int i = 0;
 >>>>>>> c333893 ([add]menumanager)
 
     map.random_empty_position();
     std::cout << map << std::endl;
+=======
+>>>>>>> c6ef58e ([EDIT] Fix up a memory crash caused by mouse_activity)
     while (window.isOpen()) {
         window.pollEvent(event);
         if (event.type == sf::Event::Closed)
             window.close();
+<<<<<<< HEAD
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+=======
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+>>>>>>> c6ef58e ([EDIT] Fix up a memory crash caused by mouse_activity)
             window.close();
 <<<<<<< HEAD
 =======
         }
+<<<<<<< HEAD
         mouse_activity(i, event, spriteDraw[1], spriteDraw[2], menu._easter_egg);
 
 >>>>>>> 2785aa3 ([add]menumanager)
@@ -108,6 +114,11 @@ int main(void)
             if (ben.getSound()->getStatus() == sf::SoundSource::Stopped && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
                 ben.getSound()->play();
         }
+=======
+        
+        window.clear();
+        menu.run(NULL, NULL);
+>>>>>>> c6ef58e ([EDIT] Fix up a memory crash caused by mouse_activity)
         window.display();
 
         // fps.capFramerate();
