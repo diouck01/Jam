@@ -8,7 +8,7 @@
 #include "MainMenu.hpp"
 
 MainMenu::MainMenu(sf::RenderWindow &window)
-: _window(window);
+: _window(window)
 {
 }
 
@@ -62,7 +62,7 @@ void set_text(sf::Text &text, std::string str, sf::Color color, sf::Vector2f pos
     text.setPosition(pos);
 }
 
-void MainMenu::loadScene(SceneManager &manager, void *data)
+void MainMenu::loadScene(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
@@ -87,7 +87,7 @@ void MainMenu::loadScene(SceneManager &manager, void *data)
     if (!backgroundT.loadFromFile("sfx/menu/background.jpg"))
         error("Error loading background texture");
     sf::Sprite background(backgroundT);
-    spriteDraw.push_back(background);
+    this->_spriteDraw.push_back(background);
 
     //PLAY
     sf::Texture button_texture;
@@ -99,8 +99,8 @@ void MainMenu::loadScene(SceneManager &manager, void *data)
     play.setFont(this->_font);
     set_text(play, "PLAY", sf::Color::Red, vec_button, 50);
     button.setPosition(vec_button);
-    spriteDraw.push_back(button);
-    textDraw.push_back(play);
+    this->_spriteDraw.push_back(button);
+    this->_textDraw.push_back(play);
 
     //QUIT
     sf::Sprite button2(button_texture);
@@ -109,8 +109,8 @@ void MainMenu::loadScene(SceneManager &manager, void *data)
     quit.setFont(this->_font);
     set_text(quit, "QUIT", sf::Color::Red, vec_button2, 50);
     button2.setPosition(vec_button2);
-    spriteDraw.push_back(button2);
-    textDraw.push_back(quit);
+    this->_spriteDraw.push_back(button2);
+    this->_textDraw.push_back(quit);
 
     //Img
     sf::Texture bee;
@@ -120,7 +120,7 @@ void MainMenu::loadScene(SceneManager &manager, void *data)
     perso.setTexture(bee);
     perso.scale(2, 2);
     perso.setPosition(800, 50);
-    spriteDraw.push_back(perso);
+    this->_spriteDraw.push_back(perso);
 
     sf::SoundBuffer buff_sound;
     if (!buff_sound.loadFromFile("sfx/menu/easter_egg.ogg"))
@@ -130,13 +130,13 @@ void MainMenu::loadScene(SceneManager &manager, void *data)
 }
 
 
-void MainMenu::unloadScene(SceneManager &manager, void *data)
+void MainMenu::unloadScene(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
 }
 
-void run(SceneManager &manager, void *data)
+void MainMenu::run(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;

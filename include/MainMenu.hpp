@@ -20,15 +20,15 @@ public:
     MainMenu(sf::RenderWindow &window);
     ~MainMenu();
 
-    void loadScene(SceneManager &manager, void *data);
-    void unloadScene(SceneManager &manager, void *data);
-    void run(SceneManager &manager, void *data);
+    void loadScene(SceneManager *manager, void *data);
+    void unloadScene(SceneManager *manager, void *data);
+    void run(SceneManager *manager, void *data);
 
+    sf::Sound _easter_egg;
 protected:
 private:
     sf::Music _music;
     sf::Font _font;
-    sf::Sound _easter_egg;
     std::vector<sf::Sprite> _spriteDraw; 
     std::vector<sf::Text> _textDraw;
     sf::RenderWindow &_window;
