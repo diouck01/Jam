@@ -8,7 +8,11 @@
 =======
 #include "menu.hpp"
 #include "Player.hpp"
+<<<<<<< HEAD
 >>>>>>> 26217ff ([add]son perso)
+=======
+#include "MainMenu.hpp"
+>>>>>>> 2785aa3 ([add]menumanager)
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
@@ -42,7 +46,8 @@ int main(void)
 =======
     std::vector<sf::Sprite> spriteDraw;
     std::vector<sf::Text> textDraw;
-    menuConstructor(spriteDraw, textDraw);
+    MainMenu menu(window);
+    // menuConstructor(spriteDraw, textDraw);
      //Music
     sf::Music music;
     set_music(music, "sfx/menu/menu_drill.ogg", 10);
@@ -52,9 +57,13 @@ int main(void)
     Player ben;
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     int i = 1;
 >>>>>>> 26217ff ([add]son perso)
 =======
+=======
+    menu.loadScene(NULL, NULL);
+>>>>>>> 2785aa3 ([add]menumanager)
     int i = 0;
 >>>>>>> c333893 ([add]menumanager)
 
@@ -66,6 +75,12 @@ int main(void)
             window.close();
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             window.close();
+<<<<<<< HEAD
+=======
+        }
+        mouse_activity(i, event, spriteDraw[1], spriteDraw[2], menu._easter_egg);
+
+>>>>>>> 2785aa3 ([add]menumanager)
         window.clear();
 <<<<<<< HEAD
 
@@ -88,7 +103,7 @@ int main(void)
         if (i != 0)
             music.stop();
         if (i == 0)
-            drawWindow(window, spriteDraw, textDraw);
+            menu.run(NULL, NULL);
         if (i == 1) {
             if (ben.getSound()->getStatus() == sf::SoundSource::Stopped && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
                 ben.getSound()->play();
