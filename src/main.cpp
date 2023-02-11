@@ -76,9 +76,7 @@ int main(void)
 >>>>>>> c6ef58e ([EDIT] Fix up a memory crash caused by mouse_activity)
 =======
     MainMenu mainmenu(window, event);
-    //mainmenu.loadScene(NULL, NULL);
     EndMenu endmenu(window);
-    //endmenu.loadScene(NULL, NULL);
     SceneManager scene;
     scene.addMenu("MainMenu", &mainmenu);
     scene.addMenu("EndMenu", &endmenu);
