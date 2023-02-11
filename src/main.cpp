@@ -10,9 +10,7 @@ int main(void)
     Framerate fps;
     sf::Event event;
     MainMenu mainmenu(window, event);
-    //mainmenu.loadScene(NULL, NULL);
     EndMenu endmenu(window);
-    //endmenu.loadScene(NULL, NULL);
     SceneManager scene;
     scene.addMenu("MainMenu", &mainmenu);
     scene.addMenu("EndMenu", &endmenu);

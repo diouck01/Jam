@@ -34,7 +34,7 @@ void mouse_activity(sf::RenderWindow &window, sf::Event event, sf::Sprite button
         if (event.mouseButton.x > button2.getPosition().x && event.mouseButton.x < button2.getPosition().x + button2.getTexture()->getSize().x && 
             event.mouseButton.y > button2.getPosition().y && event.mouseButton.y < button2.getPosition().y + button2.getTexture()->getSize().y &&
             event.mouseButton.button == sf::Mouse::Left)
-            manager->changeMenu("EndMenu"); //ici changer de scene
+            manager->changeMenu("EndMenu");
         if (event.mouseButton.x > 950 && event.mouseButton.x < 990 &&
             event.mouseButton.y > 580 && event.mouseButton.y < 590 &&
             event.mouseButton.button == sf::Mouse::Left && sound.getStatus() == sf::SoundSource::Stopped) {
