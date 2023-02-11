@@ -8,6 +8,7 @@
 #pragma once
 
 #include "IEntity.hpp"
+#include <vector>
 
 class AEntity: public IEntity {
 public:
@@ -28,9 +29,16 @@ public:
     void setVectorNorm(sf::Vector2f &vect);
     void updateAngle(void);
 
+    void setBufferSound(std::string son);
+    void setSoundPos(sf::Vector2f pos) {_sound.setPosition(pos.x, pos.y, pos.y); _sound.setMinDistance(20.f);};
+    sf::Sound *getSound() {return &_sound;};
+
 protected:
     sf::Vector2f _position;
     sf::Vector2f _movement;
     double _angle = 0;
     double _speed = 5;
+    sf::SoundBuffer _buff_sound;
+    sf::Sound _sound;
+    std::string _name;
 };
