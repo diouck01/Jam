@@ -8,9 +8,13 @@
 #pragma once
 
 #include "IEntity.hpp"
+<<<<<<< HEAD
 #include "Map.hpp"
 
 class Map;
+=======
+#include <vector>
+>>>>>>> 26217ff ([add]son perso)
 
 class AEntity: public IEntity {
 public:
@@ -33,8 +37,8 @@ public:
     void updateAngle(void);
 
     void setBufferSound(std::string son);
-    void setSoundPos(sf::Vector2f pos) {_sound.begin()->setPosition(pos.x, pos.y, pos.y); _sound.begin()->setMinDistance(20.f);};
-
+    void setSoundPos(sf::Vector2f pos) {_sound.setPosition(pos.x, pos.y, pos.y); _sound.setMinDistance(20.f);};
+    sf::Sound *getSound() {return &_sound;};
 
 protected:
     Map &_map;
@@ -43,6 +47,6 @@ protected:
     double _angle = 0;
     double _speed = 5;
     sf::SoundBuffer _buff_sound;
-    std::list<sf::Sound> _sound;
+    sf::Sound _sound;
     std::string _name;
 };

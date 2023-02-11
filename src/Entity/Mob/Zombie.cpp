@@ -16,5 +16,5 @@ Zombie::Zombie(Map &map) : AMob(map)
     if (!buffer.loadFromFile("sfx/mob/zombie_bruh.ogg"))
         throw LoadingError("Cannot load the file \"zombie_bruh.ogg\".");
     sound.setBuffer(buffer);
-    _sound.push_back(sound);
+    _sound = sound;
 }

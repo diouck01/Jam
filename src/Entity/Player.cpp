@@ -13,15 +13,32 @@ Player::Player(Map &map) : AEntity(map)
     this->_speed = 0.04;
 =======
     _name = "Ben Underwood";
+    this->setPosition(0, 0);
+    _listener.setPosition(0, 0, 0);
     _listener.setGlobalVolume(50.f);
-    sf::SoundBuffer buffer;
-    sf::Sound sound;
 
-    if (!buffer.loadFromFile("sfx/death/mc_ougth.ogg"))
+    std::srand (time(NULL));
+    int tmp = std::rand()%101;
+
+    if (tmp < 45 && !_buff_sound.loadFromFile("sfx/echo/tongue_click1.ogg"))
         throw LoadingError("Cannot load the file \"player heart.ogg\".");
+<<<<<<< HEAD
     sound.setBuffer(buffer);
     _sound.push_back(sound);
 >>>>>>> 7674920 ([add]menu bugged but work)
+=======
+    if (tmp > 45 && tmp < 90 && !_buff_sound.loadFromFile("sfx/echo/tongue_click2.ogg"))
+        throw LoadingError("Cannot load the file \"player heart.ogg\".");
+    if (tmp > 90 && tmp < 99 && !_buff_sound.loadFromFile("sfx/echo/villager.ogg"))
+        throw LoadingError("Cannot load the file \"player heart.ogg\".");
+    if (tmp == 100 && !_buff_sound.loadFromFile("sfx/echo/fart_reverb.ogg"))
+        throw LoadingError("Cannot load the file \"player heart.ogg\".");
+    sf::Sound sound;
+    sound.setBuffer(_buff_sound);
+    sound.setPosition(0, 0, 0);
+    sound.setMinDistance(20.f);
+    _sound = sound;
+>>>>>>> 26217ff ([add]son perso)
 }
 
 Player::~Player()
