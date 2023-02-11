@@ -239,18 +239,64 @@
 // //     return 0;
 // // }
 
-#include "Map.hpp"
-#include <iostream>
+// #include "Map.hpp"
+// #include <iostream>
 
-int main(void)
+// int main(void)
+// {
+//     srand(time(nullptr));
+//     Map map(20, 20);
+    
+
+//     unsigned int pos = map.random_empty_position();
+    
+//     map[pos] = 3;
+//     std::cout << map << std::endl;
+//     return (0);
+// }
+
+#include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
+#include <iostream>
+#include <unistd.h>
+
+#include "Map.hpp"
+#include "MapDisplayer.hpp"
+#include "Framerate.hpp"
+#include "Player.hpp"
+
+int main(void) 
 {
     srand(time(nullptr));
+
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "DardDesVilles");
+    Framerate fps;
+    sf::Event event;
     Map map(20, 20);
+    Player p;
+    MapDisplayer mdisplayer(map, window, p);
     
 
-    unsigned int pos = map.random_empty_position();
-    
-    map[pos] = 3;
+    map.random_empty_position();
     std::cout << map << std::endl;
-    return (0);
+    while (window.isOpen()) {
+        window.pollEvent(event);
+        if (event.type == sf::Event::Closed)
+            window.close();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+            window.close();
+        window.clear();
+
+        // All display thing must be here
+
+        p.getInput();
+        p.move();
+        mdisplayer.showMap();
+
+        window.display();
+        fps.capFramerate();
+        fps.printLog();
+    }
+
+    return 0;
 }
