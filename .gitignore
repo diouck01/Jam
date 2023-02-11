@@ -1,0 +1,14 @@
+# General excludes
+.vscode/
+*.o
+*.a
+*~
+a.out
+vgcore*
+*.gcno
+*.gcda
+*.gcov
+coding-style*
+
+# Specific excludes
+DardDesVilles
