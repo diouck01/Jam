@@ -9,6 +9,7 @@
 
 Zombie::Zombie(Map &map) : AMob(map)
 {
+    _name = "Zombie";
     sf::SoundBuffer buffer;
     sf::Sound sound;
 

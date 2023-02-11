@@ -9,6 +9,7 @@
 
 Clacker::Clacker(Map &map) : AMob(map)
 {
+    _name = "Clacker";
     sf::SoundBuffer buffer;
     sf::Sound sound;
 

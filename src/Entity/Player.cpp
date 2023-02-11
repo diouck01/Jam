@@ -9,7 +9,19 @@
 
 Player::Player(Map &map) : AEntity(map)
 {
+<<<<<<< HEAD
     this->_speed = 0.04;
+=======
+    _name = "Ben Underwood";
+    _listener.setGlobalVolume(50.f);
+    sf::SoundBuffer buffer;
+    sf::Sound sound;
+
+    if (!buffer.loadFromFile("sfx/death/mc_ougth.ogg"))
+        throw LoadingError("Cannot load the file \"player heart.ogg\".");
+    sound.setBuffer(buffer);
+    _sound.push_back(sound);
+>>>>>>> 7674920 ([add]menu bugged but work)
 }
 
 Player::~Player()

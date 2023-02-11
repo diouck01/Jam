@@ -9,6 +9,7 @@
 
 Dracula::Dracula(Map &map) : AMob(map)
 {
+    _name = "Dracula";
     sf::SoundBuffer buffer;
     sf::Sound sound;
 
