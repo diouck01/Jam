@@ -6,6 +6,7 @@
 */
 
 #include "AEntity.hpp"
+#include <iostream>
 
 AEntity::AEntity()
 {
