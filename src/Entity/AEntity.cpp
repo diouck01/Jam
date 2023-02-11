@@ -105,6 +105,7 @@ void AEntity::updateAngle(void)
         return;
     this->_angle = acos(this->getVectorDot(this->_movement, refAngle) / len);
 }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 void AEntity::setBufferSound(std::string son)
@@ -123,3 +124,5 @@ void AEntity::setBufferSound(std::string son)
 //     }
 // }
 >>>>>>> 26217ff ([add]son perso)
+=======
+>>>>>>> c333893 ([add]menumanager)
