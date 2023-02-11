@@ -35,4 +35,8 @@ private:
     sf::Font _font;
     std::vector<sf::Sprite> _spriteDraw; 
     std::vector<sf::Text> _textDraw;
+    sf::Texture _button_texture;
+    sf::Texture _backgroundTexture;
+    sf::Texture _personnage;
+    sf::SoundBuffer _buff_sound;
 };

@@ -33,10 +33,10 @@ void mouse_activity(sf::RenderWindow &window, sf::Event event, sf::Sprite button
         if (event.mouseButton.x > button2.getPosition().x && event.mouseButton.x < button2.getPosition().x + button2.getTexture()->getSize().x && 
             event.mouseButton.y > button2.getPosition().y && event.mouseButton.y < button2.getPosition().y + button2.getTexture()->getSize().y &&
             event.mouseButton.button == sf::Mouse::Left)
-            return;
-        if (event.mouseButton.x > 950 && event.mouseButton.x < 990 && 
+            return; //ici changer de scene
+        if (event.mouseButton.x > 950 && event.mouseButton.x < 990 &&
             event.mouseButton.y > 580 && event.mouseButton.y < 590 &&
-            event.mouseButton.button == sf::Mouse::Left) {
+            event.mouseButton.button == sf::Mouse::Left && sound.getStatus() == sf::SoundSource::Stopped) {
             sound.play();
         }
     }
@@ -83,17 +83,15 @@ void MainMenu::loadScene(SceneManager *manager, void *data)
     this->_textDraw.push_back(text);
 
     //Background
-    sf::Texture backgroundT;
-    if (!backgroundT.loadFromFile("sfx/menu/background.jpg"))
+    if (!_backgroundTexture.loadFromFile("sfx/menu/background.jpg"))
         error("Error loading background texture");
-    sf::Sprite background(backgroundT);
+    sf::Sprite background(_backgroundTexture);
     this->_spriteDraw.push_back(background);
 
     //PLAY
-    sf::Texture button_texture;
-    if (!button_texture.loadFromFile("sfx/menu/button1.png"))
+    if (!this->_button_texture.loadFromFile("sfx/menu/button1.png"))
         error("Error loading button");
-    sf::Sprite button(button_texture);
+    sf::Sprite button(this->_button_texture);
     sf::Vector2f vec_button(200, 250);
     sf::Text play;
     play.setFont(this->_font);
@@ -103,7 +101,7 @@ void MainMenu::loadScene(SceneManager *manager, void *data)
     this->_textDraw.push_back(play);
 
     //QUIT
-    sf::Sprite button2(button_texture);
+    sf::Sprite button2(this->_button_texture);
     sf::Vector2f vec_button2(200, 500);
     sf::Text quit;
     quit.setFont(this->_font);
@@ -113,19 +111,17 @@ void MainMenu::loadScene(SceneManager *manager, void *data)
     this->_textDraw.push_back(quit);
 
     //Img
-    sf::Texture bee;
-    if (!bee.loadFromFile("sfx/menu/perso.png"))
+    if (!this->_personnage.loadFromFile("sfx/menu/perso.png"))
         error("Error loading bee");
     sf::Sprite perso;
-    perso.setTexture(bee);
+    perso.setTexture(this->_personnage);
     perso.scale(2, 2);
     perso.setPosition(800, 50);
     this->_spriteDraw.push_back(perso);
 
-    sf::SoundBuffer buff_sound;
-    if (!buff_sound.loadFromFile("sfx/menu/easter_egg.ogg"))
+    if (!_buff_sound.loadFromFile("sfx/menu/easter_egg.ogg"))
         error("Error loading easter_egg");
-    this->_easter_egg.setBuffer(buff_sound);
+    this->_easter_egg.setBuffer(_buff_sound);
     this->_easter_egg.setVolume(30);
 
 }
@@ -143,7 +139,7 @@ void MainMenu::run(SceneManager *manager, void *data)
     (void)manager;
     (void)data;
 
-    mouse_activity(this->_window, this->_event, this->_spriteDraw[1], this->_spriteDraw[2], this->_easter_egg);
+    mouse_activity(this->_window, this->_event, this->_spriteDraw[2], this->_spriteDraw[1], this->_easter_egg);
 
     for (std::size_t i = 0; i < this->_spriteDraw.size(); ++i) {
         this->_window.draw(this->_spriteDraw[i]);
@@ -153,5 +149,4 @@ void MainMenu::run(SceneManager *manager, void *data)
     }
     if (ben.getSound()->getStatus() == sf::SoundSource::Stopped && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
             ben.getSound()->play();
-    
 }
