@@ -34,3 +34,4 @@ protected:
     double _currentFps = 0;
 private:
 };
+
