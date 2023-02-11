@@ -18,7 +18,6 @@ int main(void)
     Player ben;
     
     int i = 0;
-
     while (window.isOpen()) {
         window.pollEvent(event);
         if (event.type == sf::Event::Closed)
