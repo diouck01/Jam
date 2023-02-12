@@ -16,6 +16,7 @@
 #include "Player.hpp"
 #include "MainMenu.hpp"
 #include "Tuto.hpp"
+#include "Game.hpp"
 #include "EndMenu.hpp"
 #include "SceneManager.hpp"
 #include "RayCasting.hpp"
@@ -29,10 +30,12 @@ int main(void)
     sf::Event event;
     MainMenu mainmenu(window, event);
     Tuto tuto(window);
+    Game game(window);
     EndMenu endmenu(window);
     SceneManager scene;
     scene.addMenu("MainMenu", &mainmenu);
     scene.addMenu("Tuto", &tuto);
+    scene.addMenu("Game", &game);
     scene.addMenu("EndMenu", &endmenu);
     while (window.isOpen()) {
         window.pollEvent(event);

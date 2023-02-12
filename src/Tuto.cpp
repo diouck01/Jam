@@ -43,5 +43,5 @@ void Tuto::run(SceneManager *manager, void *data)
     (void)data;
     _window.draw(_background);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
-        manager->changeMenu("EndMenu");
+        manager->changeMenu("Game");
 }
