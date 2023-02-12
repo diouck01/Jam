@@ -12,7 +12,7 @@ Player::Player(Map &map)
 {
     this->_speed = 0.05;
     _name = "Ben Underwood";
-    _listener.setPosition(0, 0, 0);
+    //_listener.setPosition(0, 0, 0);
     _listener.setGlobalVolume(50.f);
 
     std::srand (time(NULL));
@@ -28,7 +28,7 @@ Player::Player(Map &map)
         throw LoadingError("Cannot load the file \"player heart.ogg\".");
     sf::Sound sound;
     sound.setBuffer(_buff_sound);
-    sound.setPosition(0, 0, 0);
+    //sound.setPosition(0, 0, 0);
     sound.setMinDistance(20.f);
     _sound = sound;
 }
@@ -59,6 +59,7 @@ void Player::getInput(void)
         this->_echoStrength = 0;
     } else
         ++this->_echoStrength;
+    _listener.setPosition(_position.x, _position.y, _position.y);
 }
 
 void Player::echo(double range, double width)

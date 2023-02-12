@@ -24,6 +24,8 @@ void AMob::MoveToPlayer(Player &p)
     this->setVectorNorm(this->_movement);
     this->_movement.x *= this->_speed;   
     this->_movement.y *= this->_speed;
-    std::cout << _movement.x << " " << _movement.y << std::endl;
     this->moveNoCollide(this->_movement);
+    this->getSound()->setPosition(_position.x, _position.y, _position.y);
+    if(this->getSound()->getStatus() == sf::SoundSource::Stopped)
+        this->getSound()->play();
 }
