@@ -11,5 +11,5 @@
 
 class Clacker : public AMob{
     public:
-        Clacker();
+        Clacker(Map &map);
 };

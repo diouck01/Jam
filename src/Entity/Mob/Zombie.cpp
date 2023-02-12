@@ -7,7 +7,8 @@
 
 #include "Mob/Zombie.hpp"
 
-Zombie::Zombie()
+Zombie::Zombie(Map &map)
+: AMob::AMob(map)
 {
     _name = "Zombie";
     sf::SoundBuffer buffer;
