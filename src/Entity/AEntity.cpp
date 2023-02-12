@@ -87,7 +87,7 @@ void AEntity::move(void)
     this->move(this->_movement);
 }
 
-int AEntity::distance(IEntity &entity) const
+float AEntity::distance(IEntity &entity) const
 {
     sf::Vector2f epos = entity.getPosition();
 

@@ -29,7 +29,7 @@ public:
     void move(double x, double y);
     void move(void);
     void moveNoCollide(sf::Vector2f position);
-    int distance(IEntity &entity) const;
+    float distance(IEntity &entity) const;
 
     double getVectorLength(sf::Vector2f vect) const;
     double getVectorDot(sf::Vector2f v1, sf::Vector2f v2) const;
