@@ -12,7 +12,6 @@ Player::Player(Map &map)
 {
     this->_speed = 0.05;
     _name = "Ben Underwood";
-    this->setPosition(0, 0);
     _listener.setPosition(0, 0, 0);
     _listener.setGlobalVolume(50.f);
 
