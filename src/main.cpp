@@ -26,6 +26,15 @@ int main(void)
     sf::RenderWindow window(sf::VideoMode(1280, 720), "DardDesVilles");
     Framerate fps;
     sf::Event event;
+    Map map(20, 20);
+    Player p(map);
+    MapDisplayer mdisplayer(map, window, p);
+    RayCasting raycaster(map);
+    t_RayResult result;
+
+
+    map.random_empty_position();
+    std::cout << map << std::endl;
     MainMenu mainmenu(window, event);
     EndMenu endmenu(window);
     SceneManager scene;
@@ -38,8 +47,6 @@ int main(void)
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
             window.close();
         window.clear();
-        scene.display(NULL);
-        window.display();
 
         // All display thing must be here
 
