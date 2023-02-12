@@ -120,7 +120,6 @@ void MainMenu::loadScene(SceneManager *manager, void *data)
         error("Error loading easter_egg");
     this->_easter_egg.setBuffer(_buff_sound);
     this->_easter_egg.setVolume(30);
-
 }
 
 
@@ -141,7 +140,7 @@ void MainMenu::run(SceneManager *manager, void *data)
         tmp = true;
     }
 
-    mouse_activity(this->_window, this->_event, this->_spriteDraw[2], this->_spriteDraw[1], this->_easter_egg, manager);
+    mouse_activity(this->_window, this->_event, this->_spriteDraw[2], this->_spriteDraw[1], _easter_egg, manager);
 
     for (std::size_t i = 0; i < this->_spriteDraw.size(); ++i) {
         this->_window.draw(this->_spriteDraw[i]);

@@ -28,7 +28,6 @@ void SceneManager::display(void *data)
     if (end != _sceneList.end())
         _sceneList.find(_previousScene)->second->unloadScene(this, data);
     IScene *it = _sceneList.find(_currentScene)->second;
-    it->loadScene(NULL, NULL);
     it->run(this, data);
 }
 

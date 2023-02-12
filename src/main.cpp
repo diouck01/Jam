@@ -46,10 +46,10 @@ int main(void)
 
         // All display thing must be here
 
-        p.getInput();
-        p.move();
-        mdisplayer.showMap();
-        mdisplayer.drawEcho();
+        // p.getInput();
+        // p.move();
+        // mdisplayer.showMap();
+        // mdisplayer.drawEcho();
         // result = raycaster.sendRay(p.getAngle(), 5);
         // std::cout << result.coords.x << ", " << result.coords.y << std::endl;
 
@@ -62,12 +62,12 @@ int main(void)
 
         // line[1].position.x = 640 + cos(p.getAngle()) * 100;
         // line[1].position.y = 360 + sin(p.getAngle()) * 100;
-        sf::RectangleShape block(sf::Vector2f(5, 5));
-        block.setPosition(638, 358);
-        block.setFillColor(sf::Color(255, 255, 255));
-        window.draw(block);        
+        // sf::RectangleShape block(sf::Vector2f(5, 5));
+        // block.setPosition(638, 358);
+        // block.setFillColor(sf::Color(255, 255, 255));
+        // window.draw(block);        
 
-        window.display();
+        // window.display();
         fps.capFramerate();
         fps.printLog();
     }
