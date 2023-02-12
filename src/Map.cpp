@@ -96,6 +96,19 @@ bool Map::moveToPlayer(Player &player) const
     return (false);
 }
 
+void Map::replace_mobs()
+{
+    unsigned int i;
+    unsigned int npos;
+    AMob *mobs;
+
+    for (i = 0; i != _mobs.size(); i++){
+        mobs = static_cast<AMob *> (_mobs[i]);
+        npos = random_empty_position();
+        mobs->setPosition(npos % getWidth(), npos / getWidth());
+    }
+}
+
 unsigned int Map::random_empty_position()
 {
     unsigned int i;

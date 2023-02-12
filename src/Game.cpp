@@ -59,6 +59,9 @@ void Game::run(SceneManager *manager, void *data)
     if (_frame == 60) {
         _time--;
         _frame = 0;
+        _replace++;
+        if (_replace % 15 == 0)
+            _map->replace_mobs();
     }
     if (_time == 0)
         manager->changeMenu("EndMenu");
@@ -67,7 +70,8 @@ void Game::run(SceneManager *manager, void *data)
     this->_window.draw(_text);
     _p->getInput();
     _p->move();
-    _map->moveToPlayer(*_p);
+    if (_map->moveToPlayer(*_p))
+        this->_window.close();
     _p->setListener(_p->getPosition());
     _mdisplayer->drawEcho();
     _mdisplayer->showMob();
