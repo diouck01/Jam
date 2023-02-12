@@ -75,13 +75,13 @@ void Lose::run(SceneManager *manager, void *data)
         std::srand (time(NULL));
         int tmp = std::rand()%4;
         if (tmp == 0)
-            set_music(this->_music, "sfx/death/hoho_no.ogg", 10);
+            set_music(this->_music, "sfx/death/hoho_no.ogg", 100);
         if (tmp == 1)
-            set_music(this->_music, "sfx/death/scream.ogg", 10);
+            set_music(this->_music, "sfx/death/scream.ogg", 100);
         if (tmp == 2)
-            set_music(this->_music, "sfx/death/mmmm.ogg", 10);
+            set_music(this->_music, "sfx/death/mmmm.ogg", 100);
         if (tmp == 3)
-            set_music(this->_music, "sfx/death/wah.ogg", 10);
+            set_music(this->_music, "sfx/death/wah.ogg", 100);
         _music.play();
         first = true;
     }
