@@ -112,8 +112,10 @@ void MapDisplayer::showMob(void)
     offset.y = this->_tileSize * this->_player.getPosition().y - 360;
 
     for (size_t i = 0; i < mobs.size(); ++i) {
-        block.setPosition(mobs[i]->getPosition().x * this->_tileSize - offset.x,
-        mobs[i]->getPosition().y * this->_tileSize - offset.y);
-        this->_window.draw(block);
+        if (mobs[i]->distance(_player) < 3.0){
+            block.setPosition(mobs[i]->getPosition().x * this->_tileSize - offset.x,
+            mobs[i]->getPosition().y * this->_tileSize - offset.y);
+            this->_window.draw(block);
+        }
     }
 }
