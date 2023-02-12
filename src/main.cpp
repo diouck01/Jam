@@ -31,7 +31,11 @@ int main(void)
     MapDisplayer mdisplayer(map, window, p);
     RayCasting raycaster(map);
     t_RayResult result;
-
+    sf::Vertex line[] =
+    {
+        sf::Vertex(sf::Vector2f(640, 360)),
+        sf::Vertex(sf::Vector2f(640, 360))
+    };
 
     map.random_empty_position();
     std::cout << map << std::endl;
@@ -52,17 +56,16 @@ int main(void)
 
         p.getInput();
         p.move();
-        mdisplayer.showMap();
+        // mdisplayer.showMap();
         mdisplayer.drawEcho();
-        // result = raycaster.sendRay(p.getAngle(), 5);
-        // std::cout << result.coords.x << ", " << result.coords.y << std::endl;
 
-        // for (double a = -M_PI; a < M_PI; a += M_PI / 20) {
-        //     result = raycaster.sendRay(p.getPosition(), p.getAngle() + a, 100);
-        //     line[1].position.x = (p.getPosition().x - result.coords.x) * -100 + 640;
-        //     line[1].position.y = (p.getPosition().y - result.coords.y) * -100 + 360;
-        //     window.draw(line, 2, sf::Lines);
-        // }
+
+        for (double a = -M_PI; a < M_PI; a += M_PI / 20) {
+            result = raycaster.sendRay(p.getPosition(), p.getAngle() + a, 100);
+            line[1].position.x = (p.getPosition().x - result.coords.x) * -100 + 640;
+            line[1].position.y = (p.getPosition().y - result.coords.y) * -100 + 360;
+            window.draw(line, 2, sf::Lines);
+        }
 
         // line[1].position.x = 640 + cos(p.getAngle()) * 100;
         // line[1].position.y = 360 + sin(p.getAngle()) * 100;

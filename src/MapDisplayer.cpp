@@ -59,7 +59,6 @@ void MapDisplayer::showMap(void)
 
 void MapDisplayer::drawEcho(void)
 {
-    
     std::vector<t_RayResult> &echoes = this->_player.getEchoes();
     t_RayResult result;
     sf::Vector2f blockPos;
@@ -88,10 +87,8 @@ void MapDisplayer::drawEcho(void)
     }
     tmp.setTexture(this->_echoLayer2.getTexture());
     tmp.setPosition(this->_prevOffset.x - this->_offset.x, this->_offset.y - this->_prevOffset.y);
-    if (this->_prevOffset != this->_offset) {
+    if (this->_prevOffset != this->_offset)
         this->_echoLayer3.draw(tmp, &this->_shader);
-        std::cout << "hey" << std::endl;
-    }
     else
         this->_echoLayer3.draw(tmp);
     tmp.setTexture(this->_echoLayer1.getTexture());
@@ -99,7 +96,5 @@ void MapDisplayer::drawEcho(void)
     this->_echoLayer3.draw(tmp);
     tmp.setTexture(this->_echoLayer3.getTexture());
     tmp.setPosition(0, 0);
-    // tmp.setScale(1, -1);
-    // tmp.setPosition(0, 720);
     this->_window.draw(tmp);
 }
