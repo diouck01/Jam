@@ -8,16 +8,19 @@
 #include "AEntity.hpp"
 #include <iostream>
 
-AEntity::AEntity()
+AEntity::AEntity(Map &map)
+: _map(map)
 {
     this->_position.x = 0;
     this->_position.y = 0;
     this->_movement.x = 0;
     this->_movement.y = 0;
+    this->_rayCaster = new RayCasting(this->_map);
 }
 
 AEntity::~AEntity()
 {
+    delete this->_rayCaster;
 }
 
 sf::Vector2f AEntity::getPosition() const
@@ -51,7 +54,18 @@ void AEntity::setMove(double x, double y)
 
 void AEntity::move(sf::Vector2f position)
 {
-    this->_position += position;
+    t_RayResult result = this->_rayCaster->sendRay(this->_position, this->_angle, 100);
+
+    double angle = atan2(0, position.x);
+    result = this->_rayCaster->sendRay(this->_position, angle, 100);
+    if (ABS(this->_position.x - result.coords.x) > ABS(this->_movement.x)) {
+        this->_position.x += position.x;
+    }
+    angle = atan2(position.y, 0);
+    result = this->_rayCaster->sendRay(this->_position, angle, 100);
+    if (ABS(this->_position.y - result.coords.y) > ABS(this->_movement.y)) {
+        this->_position.y += position.y;
+    }
 }
 
 void AEntity::move(double x, double y)
@@ -63,7 +77,7 @@ void AEntity::move(double x, double y)
 
 void AEntity::move(void)
 {
-    this->move(this->_movement);   
+    this->move(this->_movement);
 }
 
 double AEntity::getVectorLength(sf::Vector2f vect) const
@@ -86,12 +100,13 @@ void AEntity::setVectorNorm(sf::Vector2f &vect)
     }
 }
 
+double AEntity::getAngle(void)
+{
+    return (this->_angle);
+}
+
 void AEntity::updateAngle(void)
 {
-    sf::Vector2f refAngle(0, -1);
-    double len = this->getVectorLength(this->_movement);
-
-    if (len == 0)
-        return;
-    this->_angle = acos(this->getVectorDot(this->_movement, refAngle) / len);
+    if (this->_movement.y != 0 || this->_movement.x != 0)
+        this->_angle = atan2(this->_movement.y, this->_movement.x);
 }

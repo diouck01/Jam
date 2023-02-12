@@ -26,7 +26,6 @@ public:
     void run(SceneManager *manager, void *data);
 
     sf::Sound _easter_egg;
-    Player ben;
 protected:
 private:
     sf::RenderWindow &_window;

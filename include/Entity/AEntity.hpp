@@ -8,11 +8,13 @@
 #pragma once
 
 #include "IEntity.hpp"
+#include "Map.hpp"
+#include "RayCasting.hpp"
 #include <vector>
 
 class AEntity: public IEntity {
 public:
-    AEntity();
+    AEntity(Map &map);
     ~AEntity();
 
     sf::Vector2f getPosition() const;
@@ -28,6 +30,7 @@ public:
     double getVectorDot(sf::Vector2f v1, sf::Vector2f v2) const;
     void setVectorNorm(sf::Vector2f &vect);
     void updateAngle(void);
+    double getAngle(void);
 
     void setBufferSound(std::string son);
     void setSoundPos(sf::Vector2f pos) {_sound.setPosition(pos.x, pos.y, pos.y); _sound.setMinDistance(20.f);};
@@ -41,4 +44,6 @@ protected:
     sf::SoundBuffer _buff_sound;
     sf::Sound _sound;
     std::string _name;
+    Map &_map;
+    RayCasting *_rayCaster;
 };
