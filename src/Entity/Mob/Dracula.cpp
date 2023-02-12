@@ -7,15 +7,14 @@
 
 #include "Mob/Dracula.hpp"
 
-Dracula::Dracula(Map &map)
-: AMob::AMob(map)
+Dracula::Dracula(Map &map) : AMob(map)
 {
     _name = "Dracula";
     sf::SoundBuffer buffer;
     sf::Sound sound;
 
-    if (!buffer.loadFromFile("sfx/mob/Vampire.ogg"))
-        throw LoadingError("Cannot load the file \"Dracula.ogg\".");
+    if (!buffer.loadFromFile("sfx/mob/vampire1.ogg"))
+        throw LoadingError("Cannot load the file \"vampire.ogg\".");
     sound.setBuffer(buffer);
     _sound = sound;
 }

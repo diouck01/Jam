@@ -14,6 +14,9 @@
 #include "MapDisplayer.hpp"
 #include "Framerate.hpp"
 #include "Player.hpp"
+#include "MainMenu.hpp"
+#include "EndMenu.hpp"
+#include "SceneManager.hpp"
 #include "RayCasting.hpp"
 
 int main(void) 
@@ -28,14 +31,15 @@ int main(void)
     MapDisplayer mdisplayer(map, window, p);
     RayCasting raycaster(map);
     t_RayResult result;
-    // sf::Vertex line[] =
-    // {
-    //     sf::Vertex(sf::Vector2f(640, 360)),
-    //     sf::Vertex(sf::Vector2f(640, 360))
-    // };
+
 
     map.random_empty_position();
     std::cout << map << std::endl;
+    MainMenu mainmenu(window, event);
+    EndMenu endmenu(window);
+    SceneManager scene;
+    scene.addMenu("MainMenu", &mainmenu);
+    scene.addMenu("EndMenu", &endmenu);
     while (window.isOpen()) {
         window.pollEvent(event);
         if (event.type == sf::Event::Closed)

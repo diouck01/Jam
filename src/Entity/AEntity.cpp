@@ -8,11 +8,13 @@
 #include "AEntity.hpp"
 #include <iostream>
 
-AEntity::AEntity(Map &map)
-: _map(map)
+AEntity::AEntity(Map &map) : _map(map)
 {
-    this->_position.x = 0;
-    this->_position.y = 0;
+    unsigned int i = map.random_empty_position();
+
+    this->_position.y = i % map.getHeight();
+    this->_position.y = i / map.getWidth();
+    map[map.getWidth() * _position.y + _position.x] = 3;
     this->_movement.x = 0;
     this->_movement.y = 0;
     this->_rayCaster = new RayCasting(this->_map);
@@ -80,6 +82,13 @@ void AEntity::move(void)
     this->move(this->_movement);
 }
 
+int AEntity::distance(IEntity &entity) const
+{
+    sf::Vector2f epos = entity.getPosition();
+
+    return (sqrt((epos.x - _position.x ) * (epos.x - _position.x) + (epos.y - _position.y) * (epos.y - _position.y)));
+}
+
 double AEntity::getVectorLength(sf::Vector2f vect) const
 {
     return (sqrt(pow(vect.x, 2) + pow(vect.y, 2)));
@@ -110,3 +119,19 @@ void AEntity::updateAngle(void)
     if (this->_movement.y != 0 || this->_movement.x != 0)
         this->_angle = atan2(this->_movement.y, this->_movement.x);
 }
+
+void AEntity::setBufferSound(std::string son)
+{
+    if (!_buff_sound.loadFromFile(son)){
+        std::cout << "Error loading sond" << _name << std::endl;
+        exit(1);
+    }
+}
+
+// void AEntity::setBufferSound(std::string son)
+// {
+//     if (!_buff_sound.loadFromFile(son)){
+//         std::cout << "Error loading sond" << _name << std::endl;
+//         exit(1);
+//     }
+// }

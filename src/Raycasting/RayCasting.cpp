@@ -7,8 +7,7 @@
 
 #include "RayCasting.hpp"
 
-RayCasting::RayCasting(Map &map)
-: _map(map)
+RayCasting::RayCasting(Map &map) : _map(map)
 {
 }
 
