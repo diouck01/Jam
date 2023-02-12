@@ -14,6 +14,9 @@
 #include <vector>
 
 #include "IScene.hpp"
+#include "RayCasting.hpp"
+#include "Player.hpp"
+#include "MapDisplayer.hpp"
 
 class Game: public IScene {
 public:
@@ -26,4 +29,7 @@ public:
 protected:
 private:
     sf::RenderWindow &_window;
+    Map *_map;
+    Player *_p;
+    MapDisplayer *_mdisplayer;
 };
