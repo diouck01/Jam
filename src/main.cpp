@@ -32,6 +32,7 @@ int main(void)
     Tuto tuto(window);
     Game game(window);
     EndMenu endmenu(window);
+
     SceneManager scene;
     scene.addMenu("MainMenu", &mainmenu);
     scene.addMenu("Tuto", &tuto);
