@@ -7,6 +7,7 @@
 
 #include "AMob.hpp"
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/Entity/Mob/AMob.cpp
 AMob::AMob(Map &map) : AEntity(map)
 =======
@@ -18,6 +19,9 @@ AMob::AMob(Map &map)
 
 AMob::~AMob()
 >>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions):src/Entity/AMob.cpp
+=======
+AMob::AMob(Map &map) : AEntity(map)
+>>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 {
 }
 

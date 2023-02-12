@@ -8,11 +8,15 @@
 #include "Mob/Dracula.hpp"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Dracula::Dracula(Map &map) : AMob(map)
 =======
 Dracula::Dracula(Map &map)
 : AMob::AMob(map)
 >>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
+=======
+Dracula::Dracula(Map &map) : AMob(map)
+>>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 {
     _name = "Dracula";
     sf::SoundBuffer buffer;

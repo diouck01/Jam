@@ -25,7 +25,11 @@ class Map {
         int &operator[](unsigned int i);
         int operator[](unsigned int i) const;
     private:
+<<<<<<< HEAD
         std::vector <IEntity *> _mobs;
+=======
+        IEntity *_mobs;
+>>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
         unsigned int _width;
         unsigned int _height;
         int *_tiles;

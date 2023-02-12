@@ -22,7 +22,7 @@ void fill_around(Map &map, unsigned int i, int value)
         map[i - width - 1] = value;
 }
 
-Map::Map(unsigned int width, unsigned int height) : _width(width), _height(height), _tiles(new int[width * height])
+Map::Map(unsigned int width, unsigned int height) : _mobs() ,_width(width), _height(height), _tiles(new int[width * height])
 {
     unsigned int i;
 
@@ -33,7 +33,11 @@ Map::Map(unsigned int width, unsigned int height) : _width(width), _height(heigh
     for (i = 0; i != width * height; i++)
         if (_tiles[i] == 1)
             fill_around(*this, i, 2);
+<<<<<<< HEAD
     generate_mobs();
+=======
+    
+>>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 }
 
 Map::~Map()

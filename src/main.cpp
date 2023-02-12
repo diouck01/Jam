@@ -19,10 +19,11 @@
 int main(void) 
 {
     srand(time(nullptr));
-
+    Map map(20, 20);
     sf::RenderWindow window(sf::VideoMode(1280, 720), "DardDesVilles");
     Framerate fps;
     sf::Event event;
+<<<<<<< HEAD
     Map map(20, 20);
     Player p(map);
     MapDisplayer mdisplayer(map, window, p);
@@ -35,6 +36,16 @@ int main(void)
     // };
 
     map.random_empty_position();
+=======
+    MainMenu mainmenu(window, event);
+    EndMenu endmenu(window);
+    SceneManager scene;
+    Player p(map);
+    MapDisplayer mdisplayer(map, window, p);
+
+    scene.addMenu("MainMenu", &mainmenu);
+    scene.addMenu("EndMenu", &endmenu);
+>>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
     std::cout << map << std::endl;
     while (window.isOpen()) {
         window.pollEvent(event);

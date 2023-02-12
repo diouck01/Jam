@@ -8,11 +8,15 @@
 #include "Player.hpp"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Player::Player(Map &map) : AEntity(map)
 =======
 Player::Player(Map &map)
 : AEntity::AEntity(map)
 >>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
+=======
+Player::Player(Map &map) : AEntity(map)
+>>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 {
 <<<<<<< HEAD
     this->_speed = 0.04;
