@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "Map.hpp"
 #include "AMob.hpp"
 
 class Clacker : public AMob{

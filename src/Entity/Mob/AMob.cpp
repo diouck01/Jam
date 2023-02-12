@@ -7,13 +7,7 @@
 
 #include "AMob.hpp"
 
-AMob::AMob(Map &map)
-: AEntity::AEntity(map)
-{
-    this->_speed = 4;
-}
-
-AMob::~AMob()
+AMob::AMob(Map &map) : AEntity(map)
 {
 }
 

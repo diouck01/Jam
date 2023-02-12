@@ -7,8 +7,7 @@
 
 #include "RayCasting.hpp"
 
-RayCasting::RayCasting(Map &map)
-: _map(map)
+RayCasting::RayCasting(Map &map) : _map(map)
 {
 }
 
@@ -59,6 +58,7 @@ t_RayResult RayCasting::sendRay(sf::Vector2f pPos, double direction, double maxR
     sf::Vector2<long> pos(pPos);
     sf::Vector2<long> fixedPos;
     t_RayCollideSide side = SIDE_UNDEF;
+    t_RayCollideSide prevSide = SIDE_UNDEF;
 
     rayDir.x = (rayDir.x == 0) ? 0.000001 : rayDir.x;
     rayDir.y = (rayDir.y == 0) ? 0.000001 : rayDir.y;
@@ -70,6 +70,7 @@ t_RayResult RayCasting::sendRay(sf::Vector2f pPos, double direction, double maxR
     this->_map[fixedPos.y * this->_map.getWidth() + fixedPos.x] == 0) {
         getNextIntersectPosibilities(nextIntersect, intersectPos, rayDir);
         getNextIntersectLength(nextIntersect, nextIntersectLen);
+        prevSide = side;
         side = (nextIntersectLen[HORI] < nextIntersectLen[VERT]) ? HORI : VERT;
         prevIntersectPos = intersectPos;
         intersectPos += nextIntersect[side];
@@ -78,10 +79,16 @@ t_RayResult RayCasting::sendRay(sf::Vector2f pPos, double direction, double maxR
         pos.y = static_cast<long>(intersectPos.y);
         setFixedPos(fixedPos, pos, off, intersectPos);
     }
-    result.wallFound = len < maxRange;
-    result.coords = intersectPos;
+    if (intersectPos.x < 0 || intersectPos.y < 0) {
+        result.wallFound = true;
+        result.coords = prevIntersectPos;
+        result.side = prevSide;
+    } else {
+        result.wallFound = len < maxRange;
+        result.coords = intersectPos;
+        result.side = side;
+    }
     result.direction.x = cos(direction);
     result.direction.y = sin(direction);
-    result.side = side;
     return (result);
 }

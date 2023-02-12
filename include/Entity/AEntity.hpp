@@ -12,6 +12,9 @@
 #include "RayCasting.hpp"
 #include <vector>
 
+class Map;
+class RayCasting;
+
 class AEntity: public IEntity {
 public:
     AEntity(Map &map);
@@ -25,6 +28,7 @@ public:
     void move(sf::Vector2f position);
     void move(double x, double y);
     void move(void);
+    int distance(IEntity &entity) const;
 
     double getVectorLength(sf::Vector2f vect) const;
     double getVectorDot(sf::Vector2f v1, sf::Vector2f v2) const;
@@ -40,7 +44,7 @@ protected:
     sf::Vector2f _position;
     sf::Vector2f _movement;
     double _angle = 0;
-    double _speed = 5;
+    double _speed = 0.3;
     sf::SoundBuffer _buff_sound;
     sf::Sound _sound;
     std::string _name;
