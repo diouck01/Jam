@@ -11,13 +11,12 @@
 
 class AMob: public AEntity {
     public:
-        AMob();
-        ~AMob();
+        AMob(Map &map);
 
         sf::Sound getSound() const;
+        void generatePath(void);
         void moveToPath(void);
         void clearPath(void);
-        void generatePath(void);
         void setSoundTrigger(int soundTrigger);
         void resetSoundTrigger(void);
         void incrementSoundTrigger(int soundTrigger);
@@ -26,7 +25,6 @@ class AMob: public AEntity {
         sf::Vector2f _target;
         int _soundTriggerMax = 3;
         int _soundTrigger = 0;
-        std::list<sf::Vector2f> _path;
+        std::vector<sf::Vector2f> _path;
         
-
 };

@@ -7,13 +7,13 @@
 
 #include "Mob/Clacker.hpp"
 
-Clacker::Clacker()
+Clacker::Clacker(Map &map) : AMob(map)
 {
     _name = "Clacker";
     sf::SoundBuffer buffer;
     sf::Sound sound;
 
-    if (!buffer.loadFromFile("sfx/mob/Clacker.ogg"))
+    if (!buffer.loadFromFile("sfx/mob/villager.ogg"))
         throw LoadingError("Cannot load the file \"Clacker.ogg\".");
     sound.setBuffer(buffer);
     _sound = sound;

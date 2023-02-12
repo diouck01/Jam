@@ -7,9 +7,10 @@
 
 #pragma once
 
+#include "Map.hpp"
 #include "AMob.hpp"
 
 class Dracula : public AMob{
     public:
-        Dracula();
+        Dracula(Map &map);
 };

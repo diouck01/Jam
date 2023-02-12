@@ -7,10 +7,11 @@
 
 #include "Player.hpp"
 
-Player::Player()
+Player::Player(Map &map)
+: AEntity::AEntity(map)
 {
+    this->_speed = 0.05;
     _name = "Ben Underwood";
-    this->setPosition(0, 0);
     _listener.setPosition(0, 0, 0);
     _listener.setGlobalVolume(50.f);
 
@@ -43,18 +44,48 @@ void Player::getInput(void)
     bool q = sf::Keyboard::isKeyPressed(sf::Keyboard::Q);
     bool d = sf::Keyboard::isKeyPressed(sf::Keyboard::D);
     
-    this->setMove(q - d, s - z);
+    this->setMove(d - q, s - z);
     this->setVectorNorm(this->_movement);
+    this->_movement.x *= this->_speed;
+    this->_movement.y *= this->_speed;
     this->updateAngle();
 
     if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        if (this->_echoStrength >= 30) {
-            std::cout << "AH" << std::endl;
-        } else if (this->_echoStrength < 30 && this->_echoStrength > 0) {
-            std::cout << "ah" << std::endl;
+        if (this->_echoStrength >= 20) {
+            this->strongEcho();
+        } else if (this->_echoStrength < 20 && this->_echoStrength > 0) {
+            this->normalEcho();
         }
+        this->_echoStrength = 0;
     } else
         ++this->_echoStrength;
+}
 
+void Player::echo(double range, double width)
+{
+    s_RayResult rayResult;
+    double hAngle = width / 2;
 
+    for (double i = -hAngle + this->_angle; i <= hAngle + this->_angle; i += M_PI / 30) {
+        rayResult = this->_rayCaster->sendRay(this->_position, i, range);
+        if (rayResult.wallFound)
+            this->_echoes.push_back(rayResult);
+    }
+}
+
+void Player::normalEcho(void)
+{
+    this->getSound()->play();
+    this->echo(5, M_PI / 2);
+}
+
+void Player::strongEcho(void)
+{
+    this->getSound()->play();
+    this->echo(8, M_PI * 2);
+}
+
+std::vector<t_RayResult> &Player::getEchoes(void)
+{
+    return (this->_echoes);
 }
