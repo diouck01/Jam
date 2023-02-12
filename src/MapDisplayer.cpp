@@ -106,7 +106,7 @@ void MapDisplayer::showMob(void)
     sf::Vector2f blockPos;
     sf::RectangleShape block(sf::Vector2f(3, 3));
     sf::Sprite tmp;
-    block.setFillColor(sf::Color(200,0,255));
+    block.setFillColor(sf::Color::Red);
 
     offset.x = this->_tileSize * this->_player.getPosition().x - 640;
     offset.y = this->_tileSize * this->_player.getPosition().y - 360;
