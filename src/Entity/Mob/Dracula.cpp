@@ -10,11 +10,9 @@
 Dracula::Dracula(Map &map) : AMob(map)
 {
     _name = "Dracula";
-    sf::SoundBuffer buffer;
-    sf::Sound sound;
 
-    if (!buffer.loadFromFile("sfx/mob/vampire1.ogg"))
+    if (!_buff_sound.loadFromFile("sfx/mob/vampire1.ogg"))
         throw LoadingError("Cannot load the file \"vampire.ogg\".");
-    sound.setBuffer(buffer);
-    _sound = sound;
+    _sound.setBuffer(_buff_sound);
+    _speed = 0.04;
 }

@@ -18,6 +18,7 @@
 #include "Tuto.hpp"
 #include "Game.hpp"
 #include "EndMenu.hpp"
+#include "Lose.hpp"
 #include "SceneManager.hpp"
 #include "RayCasting.hpp"
 
@@ -32,12 +33,14 @@ int main(void)
     Tuto tuto(window);
     Game game(window);
     EndMenu endmenu(window);
+    Lose lose(window);
 
     SceneManager scene;
     scene.addMenu("MainMenu", &mainmenu);
     scene.addMenu("Tuto", &tuto);
     scene.addMenu("Game", &game);
     scene.addMenu("EndMenu", &endmenu);
+    scene.addMenu("Lose", &lose);
 
     while (window.isOpen()) {
         window.pollEvent(event);

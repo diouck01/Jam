@@ -137,7 +137,7 @@ void MainMenu::run(SceneManager *manager, void *data)
     if (tmp == false) {
         set_music(this->_music, "sfx/menu/menu_drill.ogg", 10);
         this->_music.play();
-        this->_music.setVolume(100);
+        this->_music.setVolume(80);
         tmp = true;
     }
 

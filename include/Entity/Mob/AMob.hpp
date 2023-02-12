@@ -23,6 +23,10 @@ class AMob: public AEntity {
         void resetSoundTrigger(void);
         void incrementSoundTrigger(int soundTrigger);
 
+        void setBufferSound(std::string son);
+        void setSoundPos(sf::Vector2f pos) {_sound.setPosition(pos.x, pos.y, pos.y); _sound.setMinDistance(20.f);};
+        sf::Sound *getSound() {return &_sound;};
+
     protected:
         sf::Vector2f _target;
         int _soundTriggerMax = 3;

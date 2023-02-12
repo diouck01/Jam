@@ -25,4 +25,7 @@ void AMob::MoveToPlayer(Player &p)
     this->_movement.x *= this->_speed;   
     this->_movement.y *= this->_speed;
     this->moveNoCollide(this->_movement);
+    this->getSound()->setPosition(_position.x, _position.y, _position.y);
+    if(this->getSound()->getStatus() == sf::SoundSource::Stopped)
+        this->getSound()->play();
 }
