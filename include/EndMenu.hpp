@@ -14,7 +14,6 @@
 #include <vector>
 
 #include "IScene.hpp"
-#include "Player.hpp"
 
 class EndMenu: public IScene {
 public:
