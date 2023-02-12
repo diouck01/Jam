@@ -39,3 +39,28 @@ void MapDisplayer::showMap(void)
         this->_window.draw(block);
     }
 }
+
+void MapDisplayer::drawEcho(void)
+{
+    std::vector<t_RayResult> &echoes = this->_player.getEchoes();
+    t_RayResult result;
+    sf::Vector2f offset;
+    sf::Vector2f blockPos;
+    sf::RectangleShape block(sf::Vector2f(this->_tileSize, this->_tileSize));
+
+    offset.x += this->_tileSize * this->_player.getPosition().x - 640;
+    offset.y += this->_tileSize * this->_player.getPosition().y - 360;
+
+    block.setFillColor(sf::Color(255,255,255));
+    while (echoes.size() > 0) {
+        result = echoes.back();
+        echoes.pop_back();
+
+        blockPos.x = (static_cast<long>(result.coords.x) - (result.direction.x < 0 && result.side == HORI));
+        blockPos.y = (static_cast<long>(result.coords.y) - (result.direction.y < 0 && result.side == VERT));
+        blockPos.x *= this->_tileSize;
+        blockPos.y *= this->_tileSize;
+        block.setPosition(blockPos - offset);
+        this->_window.draw(block);
+    }
+}

@@ -11,5 +11,5 @@
 
 class Dracula : public AMob{
     public:
-        Dracula();
+        Dracula(Map &map);
 };

@@ -149,6 +149,4 @@ void MainMenu::run(SceneManager *manager, void *data)
     for (std::size_t i = 0; i < this->_textDraw.size(); ++i) {
         this->_window.draw(this->_textDraw[i]);
     }
-    if (ben.getSound()->getStatus() == sf::SoundSource::Stopped && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-            ben.getSound()->play();
 }

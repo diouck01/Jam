@@ -7,7 +7,8 @@
 
 #include "Mob/Dracula.hpp"
 
-Dracula::Dracula()
+Dracula::Dracula(Map &map)
+: AMob::AMob(map)
 {
     _name = "Dracula";
     sf::SoundBuffer buffer;
