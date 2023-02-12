@@ -34,7 +34,7 @@ void mouse_activity(sf::RenderWindow &window, sf::Event event, sf::Sprite button
         if (event.mouseButton.x > button2.getPosition().x && event.mouseButton.x < button2.getPosition().x + button2.getTexture()->getSize().x && 
             event.mouseButton.y > button2.getPosition().y && event.mouseButton.y < button2.getPosition().y + button2.getTexture()->getSize().y &&
             event.mouseButton.button == sf::Mouse::Left)
-            manager->changeMenu("EndMenu");
+            manager->changeMenu("Tuto");
         if (event.mouseButton.x > 950 && event.mouseButton.x < 990 &&
             event.mouseButton.y > 580 && event.mouseButton.y < 590 &&
             event.mouseButton.button == sf::Mouse::Left && sound.getStatus() == sf::SoundSource::Stopped) {
@@ -149,6 +149,4 @@ void MainMenu::run(SceneManager *manager, void *data)
     for (std::size_t i = 0; i < this->_textDraw.size(); ++i) {
         this->_window.draw(this->_textDraw[i]);
     }
-    if (ben.getSound()->getStatus() == sf::SoundSource::Stopped && sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-            ben.getSound()->play();
 }

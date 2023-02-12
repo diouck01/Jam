@@ -14,7 +14,6 @@
 #include <vector>
 
 #include "IScene.hpp"
-#include "Player.hpp"
 
 class EndMenu: public IScene {
 public:
@@ -24,9 +23,6 @@ public:
     void loadScene(SceneManager *manager, void *data);
     void unloadScene(SceneManager *manager, void *data);
     void run(SceneManager *manager, void *data);
-
-    sf::Sound _easter_egg;
-    Player ben;
 protected:
 private:
     sf::RenderWindow &_window;

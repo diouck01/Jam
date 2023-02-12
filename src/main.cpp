@@ -1,6 +1,7 @@
 #include "menu.hpp"
 #include "Player.hpp"
 #include "MainMenu.hpp"
+#include "Tuto.hpp"
 #include "EndMenu.hpp"
 #include "SceneManager.hpp"
 
@@ -10,9 +11,11 @@ int main(void)
     Framerate fps;
     sf::Event event;
     MainMenu mainmenu(window, event);
+    Tuto tuto(window);
     EndMenu endmenu(window);
     SceneManager scene;
     scene.addMenu("MainMenu", &mainmenu);
+    scene.addMenu("Tuto", &tuto);
     scene.addMenu("EndMenu", &endmenu);
 
     while (window.isOpen()) {
