@@ -71,7 +71,7 @@ void Game::run(SceneManager *manager, void *data)
     _p->getInput();
     _p->move();
     if (_map->moveToPlayer(*_p))
-        this->_window.close();
+        manager->changeMenu("Lose");
     _p->setListener(_p->getPosition());
     _mdisplayer->drawEcho();
     _mdisplayer->showMob();

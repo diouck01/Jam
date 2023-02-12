@@ -52,7 +52,7 @@ int main(void)
         scene.display(NULL);
         window.display();
         fps.capFramerate();
-        fps.printLog();
+        //fps.printLog();
     }
 
     return 0;

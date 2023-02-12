@@ -48,14 +48,14 @@ void Lose::loadScene(SceneManager *manager, void *data)
     if (!this->_font.loadFromFile("sfx/menu/gunplay-3d.ttf"))
         error("Error loading font");
     
-    if (!_backgroundTexture.loadFromFile("sfx/end/end.jpeg"))
+    if (!_backgroundTexture.loadFromFile("sfx/lose.jpg"))
         error("Error loading background texture");
     _background.setTexture(_backgroundTexture);
 
 
     sf::Vector2f pos_text(200, 200);
     _text.setFont(this->_font);
-    set_text(_text, "YOU WIN", sf::Color::Red, pos_text, 0);
+    set_text(_text, "YOU LOSE", sf::Color::Red, pos_text, 0);
 }
 
 void Lose::unloadScene(SceneManager *manager, void *data)
@@ -70,8 +70,8 @@ void Lose::run(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
-    static bool tmp = false;
-    if (tmp == false) {
+    static bool first = false;
+    if (first == false) {
         std::srand (time(NULL));
         int tmp = std::rand()%4;
         if (tmp == 0)
@@ -83,7 +83,7 @@ void Lose::run(SceneManager *manager, void *data)
         if (tmp == 3)
             set_music(this->_music, "sfx/death/wah.ogg", 10);
         _music.play();
-        tmp = true;
+        first = true;
     }
     _window.draw(_background);
     _window.draw(_text);
