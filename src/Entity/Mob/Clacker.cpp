@@ -10,11 +10,8 @@
 Clacker::Clacker(Map &map) : AMob(map)
 {
     _name = "Clacker";
-    sf::SoundBuffer buffer;
-    sf::Sound sound;
 
-    if (!buffer.loadFromFile("sfx/mob/villager.ogg"))
+    if (!_buff_sound.loadFromFile("sfx/mob/spider1.ogg"))
         throw LoadingError("Cannot load the file \"Clacker.ogg\".");
-    sound.setBuffer(buffer);
-    _sound = sound;
+    _sound.setBuffer(_buff_sound);
 }

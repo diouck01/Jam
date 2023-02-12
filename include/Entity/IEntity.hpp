@@ -31,5 +31,5 @@ class IEntity {
         virtual void setPosition(double x, double y) = 0;
         virtual void move(sf::Vector2f position) = 0;
         virtual void move(double x, double y) = 0;
-        virtual int distance(IEntity &entity) const = 0;
+        virtual float distance(IEntity &entity) const = 0;
 };
