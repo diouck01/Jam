@@ -7,7 +7,12 @@
 
 #include "Mob/Dracula.hpp"
 
+<<<<<<< HEAD
 Dracula::Dracula(Map &map) : AMob(map)
+=======
+Dracula::Dracula(Map &map)
+: AMob::AMob(map)
+>>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
 {
     _name = "Dracula";
     sf::SoundBuffer buffer;

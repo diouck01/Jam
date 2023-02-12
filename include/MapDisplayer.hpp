@@ -16,6 +16,7 @@ public:
     ~MapDisplayer();
 
     void showMap(void);
+    void drawEcho(void);
 protected:
     int _tileSize = 100;
     Map &_map;

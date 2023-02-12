@@ -144,10 +144,9 @@ all: lib
 object:$(NAME)
 %.o : %$(SRC_FILE_EXT)
 	@if [ -f $@ ]; then rm $@; fi
-	@$(CLS_LINE)
 	@$(CC) -o $@ -c $< $(_INCLUDE_GCC) $(_LIB_GCC) $(LIB_FLAGS) $(FLAGS) && \
-	($(ECHO) -n $(BLINK)" [OK]"$(DEFLT) $<) || \
-	($(ECHO) -n $(RED)" [KO]"$(DEFLT) $< "\n\n\n\n\n\n");
+	($(CLS_LINE) ; $(ECHO) -n $(BLINK)" [OK]"$(DEFLT) $<) || \
+	($(CLS_LINE) ; $(ECHO) -n $(RED)" [KO]"$(DEFLT) $< "\n\n\n\n\n\n");
 $(NAME):$(_OBJ)
 	@($(CLS_LINE) ; $(ECHO) $(BLUE)" [OBJECT COMPILATION FINISHED]"$(DEFLT))
 

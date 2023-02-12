@@ -7,7 +7,12 @@
 
 #include "Mob/Clacker.hpp"
 
+<<<<<<< HEAD
 Clacker::Clacker(Map &map) : AMob(map)
+=======
+Clacker::Clacker(Map &map)
+: AMob::AMob(map)
+>>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
 {
     _name = "Clacker";
     sf::SoundBuffer buffer;

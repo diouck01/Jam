@@ -9,10 +9,15 @@
 
 #include "IEntity.hpp"
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "Map.hpp"
 
 class Map;
 =======
+=======
+#include "Map.hpp"
+#include "RayCasting.hpp"
+>>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
 #include <vector>
 >>>>>>> 26217ff ([add]son perso)
 
@@ -35,6 +40,7 @@ public:
     double getVectorDot(sf::Vector2f v1, sf::Vector2f v2) const;
     void setVectorNorm(sf::Vector2f &vect);
     void updateAngle(void);
+    double getAngle(void);
 
     void setBufferSound(std::string son);
     void setSoundPos(sf::Vector2f pos) {_sound.setPosition(pos.x, pos.y, pos.y); _sound.setMinDistance(20.f);};
@@ -49,4 +55,6 @@ protected:
     sf::SoundBuffer _buff_sound;
     sf::Sound _sound;
     std::string _name;
+    Map &_map;
+    RayCasting *_rayCaster;
 };

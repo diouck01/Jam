@@ -7,7 +7,12 @@
 
 #include "Player.hpp"
 
+<<<<<<< HEAD
 Player::Player(Map &map) : AEntity(map)
+=======
+Player::Player(Map &map)
+: AEntity::AEntity(map)
+>>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
 {
 <<<<<<< HEAD
     this->_speed = 0.04;
@@ -59,12 +64,41 @@ void Player::getInput(void)
     this->updateAngle();
 
     if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        if (this->_echoStrength >= 30) {
-            std::cout << "AH" << std::endl;
-        } else if (this->_echoStrength < 30 && this->_echoStrength > 0) {
-            std::cout << "ah" << std::endl;
+        if (this->_echoStrength >= 20) {
+            this->strongEcho();
+        } else if (this->_echoStrength < 20 && this->_echoStrength > 0) {
+            this->normalEcho();
         }
         this->_echoStrength = 0;
     } else
         ++this->_echoStrength;
+}
+
+void Player::echo(double range, double width)
+{
+    s_RayResult rayResult;
+    double hAngle = width / 2;
+
+    for (double i = -hAngle + this->_angle; i <= hAngle + this->_angle; i += M_PI / 30) {
+        rayResult = this->_rayCaster->sendRay(this->_position, i, range);
+        if (rayResult.wallFound)
+            this->_echoes.push_back(rayResult);
+    }
+}
+
+void Player::normalEcho(void)
+{
+    this->getSound()->play();
+    this->echo(5, M_PI / 2);
+}
+
+void Player::strongEcho(void)
+{
+    this->getSound()->play();
+    this->echo(8, M_PI * 2);
+}
+
+std::vector<t_RayResult> &Player::getEchoes(void)
+{
+    return (this->_echoes);
 }
