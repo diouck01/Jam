@@ -37,6 +37,7 @@ int main(void)
     scene.addMenu("Tuto", &tuto);
     scene.addMenu("Game", &game);
     scene.addMenu("EndMenu", &endmenu);
+
     while (window.isOpen()) {
         window.pollEvent(event);
         if (event.type == sf::Event::Closed)

@@ -23,7 +23,7 @@ void Game::loadScene(SceneManager *manager, void *data)
 {
     (void)manager;
     (void)data;
-    _map->random_empty_position();
+
 }
 
 void Game::unloadScene(SceneManager *manager, void *data)
@@ -38,6 +38,10 @@ void Game::run(SceneManager *manager, void *data)
     _p->getInput();
     _p->move();
     _mdisplayer->drawEcho();
+    sf::RectangleShape block(sf::Vector2f(5, 5));
+    block.setPosition(638, 358);
+    block.setFillColor(sf::Color(255, 255, 255));
+    this->_window.draw(block);  
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
         manager->changeMenu("EndMenu");
 }
