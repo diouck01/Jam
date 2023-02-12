@@ -9,8 +9,9 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-
 #include "Map.hpp"
+
+class Map;
 
 #define ABS(nbr) (((nbr) < 0) ? -(nbr) : (nbr))
 #define IS_NEG(nbr) ((nbr) < 0)

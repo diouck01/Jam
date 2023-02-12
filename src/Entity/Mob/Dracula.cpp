@@ -23,7 +23,11 @@ Dracula::Dracula(Map &map) : AMob(map)
     sf::Sound sound;
 
     if (!buffer.loadFromFile("sfx/mob/vampire1.ogg"))
+<<<<<<< HEAD
         throw LoadingError("Cannot load the file \"Vampire.ogg\".");
+=======
+        throw LoadingError("Cannot load the file \"Dracula.ogg\".");
+>>>>>>> 750db46 ([Fix] merge conflit fixed)
     sound.setBuffer(buffer);
     _sound = sound;
 }

@@ -45,7 +45,13 @@ int main(void)
 
     scene.addMenu("MainMenu", &mainmenu);
     scene.addMenu("EndMenu", &endmenu);
+<<<<<<< HEAD
 >>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
+=======
+    unsigned int pos = map.random_empty_position();
+    
+    map[pos] = 4;
+>>>>>>> 750db46 ([Fix] merge conflit fixed)
     std::cout << map << std::endl;
     while (window.isOpen()) {
         window.pollEvent(event);

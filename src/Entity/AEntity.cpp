@@ -23,11 +23,16 @@ AEntity::AEntity(Map &map) : _map(map)
 
     this->_position.x = i % map.getWidth();
 <<<<<<< HEAD
+<<<<<<< HEAD
     this->_position.y = i / map.getWidth();
     map[map.getWidth() * _position.y + _position.x] = 3;
 =======
     this->_position.y = i % map.getHeight();
 >>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
+=======
+    this->_position.y = i / map.getWidth();
+    map[map.getWidth() * _position.y + _position.x] = 3;
+>>>>>>> 750db46 ([Fix] merge conflit fixed)
     this->_movement.x = 0;
     this->_movement.y = 0;
     this->_rayCaster = new RayCasting(this->_map);

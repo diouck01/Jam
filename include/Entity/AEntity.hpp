@@ -10,16 +10,22 @@
 #include "IEntity.hpp"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 #include "Map.hpp"
 
 class Map;
 =======
 =======
 #include "Map.hpp"
+=======
+>>>>>>> 750db46 ([Fix] merge conflit fixed)
 #include "RayCasting.hpp"
 >>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
 #include <vector>
 >>>>>>> 26217ff ([add]son perso)
+
+class Map;
+class RayCasting;
 
 class AEntity: public IEntity {
 public:
