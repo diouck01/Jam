@@ -7,16 +7,7 @@
 
 #include "Mob/Zombie.hpp"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 Zombie::Zombie(Map &map) : AMob(map)
-=======
-Zombie::Zombie(Map &map)
-: AMob::AMob(map)
->>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
-=======
-Zombie::Zombie(Map &map) : AMob(map)
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 {
     _name = "Zombie";
     sf::SoundBuffer buffer;

@@ -7,20 +7,10 @@
 
 #include "Player.hpp"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-Player::Player(Map &map) : AEntity(map)
-=======
 Player::Player(Map &map)
 : AEntity::AEntity(map)
->>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
-=======
-Player::Player(Map &map) : AEntity(map)
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 {
-<<<<<<< HEAD
     this->_speed = 0.04;
-=======
     _name = "Ben Underwood";
     this->setPosition(0, 0);
     _listener.setPosition(0, 0, 0);
@@ -31,11 +21,6 @@ Player::Player(Map &map) : AEntity(map)
 
     if (tmp < 45 && !_buff_sound.loadFromFile("sfx/echo/tongue_click1.ogg"))
         throw LoadingError("Cannot load the file \"player heart.ogg\".");
-<<<<<<< HEAD
-    sound.setBuffer(buffer);
-    _sound.push_back(sound);
->>>>>>> 7674920 ([add]menu bugged but work)
-=======
     if (tmp > 45 && tmp < 90 && !_buff_sound.loadFromFile("sfx/echo/tongue_click2.ogg"))
         throw LoadingError("Cannot load the file \"player heart.ogg\".");
     if (tmp > 90 && tmp < 99 && !_buff_sound.loadFromFile("sfx/echo/villager.ogg"))
@@ -47,7 +32,6 @@ Player::Player(Map &map) : AEntity(map)
     sound.setPosition(0, 0, 0);
     sound.setMinDistance(20.f);
     _sound = sound;
->>>>>>> 26217ff ([add]son perso)
 }
 
 Player::~Player()

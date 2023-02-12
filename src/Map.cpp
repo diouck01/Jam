@@ -33,15 +33,7 @@ Map::Map(unsigned int width, unsigned int height) : _width(width), _height(heigh
     for (i = 0; i != width * height; i++)
         if (_tiles[i] == 1)
             fill_around(*this, i, 2);
-<<<<<<< HEAD
-<<<<<<< HEAD
     generate_mobs();
-=======
-    
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
-=======
-    generate_mobs();
->>>>>>> 750db46 ([Fix] merge conflit fixed)
 }
 
 Map::~Map()

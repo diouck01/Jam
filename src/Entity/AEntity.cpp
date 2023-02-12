@@ -8,31 +8,13 @@
 #include "AEntity.hpp"
 #include <iostream>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 AEntity::AEntity(Map &map) : _map(map)
-=======
-AEntity::AEntity(Map &map)
-: _map(map)
->>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
-=======
-AEntity::AEntity(Map &map) : _map(map)
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 {
     unsigned int i = map.random_empty_position();
 
-    this->_position.x = i % map.getWidth();
-<<<<<<< HEAD
-<<<<<<< HEAD
-    this->_position.y = i / map.getWidth();
-    map[map.getWidth() * _position.y + _position.x] = 3;
-=======
     this->_position.y = i % map.getHeight();
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
-=======
     this->_position.y = i / map.getWidth();
     map[map.getWidth() * _position.y + _position.x] = 3;
->>>>>>> 750db46 ([Fix] merge conflit fixed)
     this->_movement.x = 0;
     this->_movement.y = 0;
     this->_rayCaster = new RayCasting(this->_map);
@@ -137,9 +119,7 @@ void AEntity::updateAngle(void)
     if (this->_movement.y != 0 || this->_movement.x != 0)
         this->_angle = atan2(this->_movement.y, this->_movement.x);
 }
-<<<<<<< HEAD
 
-<<<<<<< HEAD
 void AEntity::setBufferSound(std::string son)
 {
     if (!_buff_sound.loadFromFile(son)){
@@ -147,7 +127,7 @@ void AEntity::setBufferSound(std::string son)
         exit(1);
     }
 }
-=======
+
 // void AEntity::setBufferSound(std::string son)
 // {
 //     if (!_buff_sound.loadFromFile(son)){
@@ -155,6 +135,3 @@ void AEntity::setBufferSound(std::string son)
 //         exit(1);
 //     }
 // }
->>>>>>> 26217ff ([add]son perso)
-=======
->>>>>>> c333893 ([add]menumanager)

@@ -8,21 +8,9 @@
 #pragma once
 
 #include "IEntity.hpp"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 #include "Map.hpp"
-
-class Map;
-=======
-=======
-#include "Map.hpp"
-=======
->>>>>>> 750db46 ([Fix] merge conflit fixed)
 #include "RayCasting.hpp"
->>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
 #include <vector>
->>>>>>> 26217ff ([add]son perso)
 
 class Map;
 class RayCasting;
@@ -53,11 +41,10 @@ public:
     sf::Sound *getSound() {return &_sound;};
 
 protected:
-    Map &_map;
     sf::Vector2f _position;
     sf::Vector2f _movement;
     double _angle = 0;
-    double _speed = 5;
+    double _speed = 0.3;
     sf::SoundBuffer _buff_sound;
     sf::Sound _sound;
     std::string _name;

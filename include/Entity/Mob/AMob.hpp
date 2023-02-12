@@ -12,14 +12,7 @@
 class AMob: public AEntity {
     public:
         AMob(Map &map);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        ~AMob();
-=======
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 
->>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
         sf::Sound getSound() const;
         void moveToPath(void);
         void clearPath(void);

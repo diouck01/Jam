@@ -7,27 +7,14 @@
 
 #include "Mob/Dracula.hpp"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 Dracula::Dracula(Map &map) : AMob(map)
-=======
-Dracula::Dracula(Map &map)
-: AMob::AMob(map)
->>>>>>> 32b6e43 ([ADD] Raycasting/echo system and collisions)
-=======
-Dracula::Dracula(Map &map) : AMob(map)
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
 {
     _name = "Dracula";
     sf::SoundBuffer buffer;
     sf::Sound sound;
 
     if (!buffer.loadFromFile("sfx/mob/vampire1.ogg"))
-<<<<<<< HEAD
-        throw LoadingError("Cannot load the file \"Vampire.ogg\".");
-=======
-        throw LoadingError("Cannot load the file \"Dracula.ogg\".");
->>>>>>> 750db46 ([Fix] merge conflit fixed)
+        throw LoadingError("Cannot load the file \"vampire.ogg\".");
     sound.setBuffer(buffer);
     _sound = sound;
 }

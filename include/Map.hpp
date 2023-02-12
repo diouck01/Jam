@@ -8,13 +8,8 @@
 #pragma once
 #include <vector>
 #include <ostream>
-<<<<<<< HEAD
-#include <IEntity.hpp>
-#include <AEntity.hpp>
-=======
 #include "IEntity.hpp"
 #include "AEntity.hpp"
->>>>>>> 750db46 ([Fix] merge conflit fixed)
 
 class Map {
     public:
@@ -30,15 +25,7 @@ class Map {
         int &operator[](unsigned int i);
         int operator[](unsigned int i) const;
     private:
-<<<<<<< HEAD
-<<<<<<< HEAD
         std::vector <IEntity *> _mobs;
-=======
-        IEntity *_mobs;
->>>>>>> 4b6dab9 ([Fix] Merge conflit fixed)
-=======
-        std::vector <IEntity *> _mobs;
->>>>>>> 750db46 ([Fix] merge conflit fixed)
         unsigned int _width;
         unsigned int _height;
         int *_tiles;
