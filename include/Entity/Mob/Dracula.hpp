@@ -10,6 +10,7 @@
 #include "Map.hpp"
 #include "AMob.hpp"
 
+class Player;
 class Dracula : public AMob{
     public:
         Dracula(Map &map);

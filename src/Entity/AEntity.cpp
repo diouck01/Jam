@@ -12,12 +12,12 @@ AEntity::AEntity(Map &map) : _map(map)
 {
     unsigned int i = map.random_empty_position();
 
-    this->_position.y = i % map.getHeight();
+    this->_position.x = i % map.getWidth();
     this->_position.y = i / map.getWidth();
-    map[map.getWidth() * _position.y + _position.x] = 3;
     this->_movement.x = 0;
     this->_movement.y = 0;
     this->_rayCaster = new RayCasting(this->_map);
+    this->_speed = 0.03;
 }
 
 AEntity::~AEntity()
@@ -52,6 +52,11 @@ void AEntity::setMove(double x, double y)
     sf::Vector2f position(x, y);
     
     this->setMove(position);   
+}
+
+void AEntity::moveNoCollide(sf::Vector2f position)
+{
+    this->_position += position;
 }
 
 void AEntity::move(sf::Vector2f position)

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** Visual Studio Live Share (Espace de travail)
 ** File description:
-** MainMenu
+** Game
 */
 
 #pragma once
@@ -14,27 +14,27 @@
 #include <vector>
 
 #include "IScene.hpp"
+#include "RayCasting.hpp"
+#include "Player.hpp"
+#include "MapDisplayer.hpp"
 
-class MainMenu: public IScene {
+class Player;
+class Game: public IScene {
 public:
-    MainMenu(sf::RenderWindow &window, sf::Event &event);
-    ~MainMenu();
+    Game(sf::RenderWindow &window);
+    ~Game();
 
     void loadScene(SceneManager *manager, void *data);
     void unloadScene(SceneManager *manager, void *data);
     void run(SceneManager *manager, void *data);
-
-    sf::Sound _easter_egg;
 protected:
 private:
     sf::RenderWindow &_window;
-    sf::Event &_event;
-    sf::Music _music;
+    int _time = 120;
+    int _frame = 0;
     sf::Font _font;
-    std::vector<sf::Sprite> _spriteDraw; 
-    std::vector<sf::Text> _textDraw;
-    sf::Texture _button_texture;
-    sf::Texture _backgroundTexture;
-    sf::Texture _personnage;
-    sf::SoundBuffer _buff_sound;
+    sf::Text _text;
+    Map *_map;
+    Player *_p;
+    MapDisplayer *_mdisplayer;
 };

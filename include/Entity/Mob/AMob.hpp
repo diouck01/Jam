@@ -8,12 +8,14 @@
 #pragma once
 
 #include "AEntity.hpp"
+#include "Player.hpp"
 
 class AMob: public AEntity {
     public:
         AMob(Map &map);
 
         sf::Sound getSound() const;
+        void MoveToPlayer(Player &p);
         void generatePath(void);
         void moveToPath(void);
         void clearPath(void);
