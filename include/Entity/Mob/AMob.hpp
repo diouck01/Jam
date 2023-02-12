@@ -11,7 +11,7 @@
 
 class AMob: public AEntity {
     public:
-        AMob();
+        AMob(Map &map);
         ~AMob();
 
         sf::Sound getSound() const;
