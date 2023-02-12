@@ -15,3 +15,15 @@ void AMob::generatePath(void)
 {
     
 }
+
+void AMob::MoveToPlayer(Player &p)
+{
+    sf::Vector2f pPos = p.getPosition();
+    this->_movement = pPos - this->_position;
+
+    this->setVectorNorm(this->_movement);
+    this->_movement.x *= this->_speed;   
+    this->_movement.y *= this->_speed;
+    std::cout << _movement.x << " " << _movement.y << std::endl;
+    this->moveNoCollide(this->_movement);
+}

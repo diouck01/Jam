@@ -8,6 +8,7 @@
 #pragma once
 
 #include <iostream>
+#include <vector>
 
 #include "AEntity.hpp"
 #include "RayCasting.hpp"

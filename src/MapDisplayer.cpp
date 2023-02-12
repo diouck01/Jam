@@ -98,3 +98,22 @@ void MapDisplayer::drawEcho(void)
     tmp.setPosition(0, 0);
     this->_window.draw(tmp);
 }
+
+void MapDisplayer::showMob(void)
+{
+    sf::Vector2f offset;
+    std::vector <IEntity *> mobs = this->_map.getMobs();
+    sf::Vector2f blockPos;
+    sf::RectangleShape block(sf::Vector2f(3, 3));
+    sf::Sprite tmp;
+    block.setFillColor(sf::Color(200,0,255));
+
+    offset.x = this->_tileSize * this->_player.getPosition().x - 640;
+    offset.y = this->_tileSize * this->_player.getPosition().y - 360;
+
+    for (size_t i = 0; i < mobs.size(); ++i) {
+        block.setPosition(mobs[i]->getPosition().x * this->_tileSize - offset.x,
+        mobs[i]->getPosition().y * this->_tileSize - offset.y);
+        this->_window.draw(block);
+    }
+}

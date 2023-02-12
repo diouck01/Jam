@@ -10,6 +10,7 @@
 #include "Map.hpp"
 #include "AMob.hpp"
 
+class Player;
 class Clacker : public AMob{
     public:
         Clacker(Map &map);

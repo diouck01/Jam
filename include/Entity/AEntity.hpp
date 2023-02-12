@@ -28,6 +28,7 @@ public:
     void move(sf::Vector2f position);
     void move(double x, double y);
     void move(void);
+    void moveNoCollide(sf::Vector2f position);
     int distance(IEntity &entity) const;
 
     double getVectorLength(sf::Vector2f vect) const;

@@ -9,6 +9,7 @@
 #include <Zombie.hpp>
 #include <Clacker.hpp>
 #include <Dracula.hpp>
+#include "AMob.hpp"
 
 void fill_around(Map &map, unsigned int i, int value)
 {
@@ -61,6 +62,11 @@ int Map::operator[](unsigned int i) const
     return (_tiles[i]);
 }
 
+std::vector <IEntity *>Map::getMobs() const
+{
+    return (_mobs);
+}
+
 unsigned int Map::getWidth() const
 {
     return (_width);
@@ -74,6 +80,20 @@ unsigned int Map::getHeight() const
 unsigned int Map::getSize() const
 {
     return (_width * _height);
+}
+
+bool Map::moveToPlayer(Player &player) const
+{
+    unsigned int i;
+    AMob *mobs;
+
+    for (i = 0; i != _mobs.size(); i++){
+        mobs = static_cast<AMob *> (_mobs[i]);
+        mobs->MoveToPlayer(player);
+        if (mobs->distance(player) < 0.1)
+            return (true);
+    }
+    return (false);
 }
 
 unsigned int Map::random_empty_position()

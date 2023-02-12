@@ -18,6 +18,7 @@
 #include "Player.hpp"
 #include "MapDisplayer.hpp"
 
+class Player;
 class Game: public IScene {
 public:
     Game(sf::RenderWindow &window);
@@ -29,6 +30,10 @@ public:
 protected:
 private:
     sf::RenderWindow &_window;
+    int _time = 120;
+    int _frame = 0;
+    sf::Font _font;
+    sf::Text _text;
     Map *_map;
     Player *_p;
     MapDisplayer *_mdisplayer;

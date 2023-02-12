@@ -18,6 +18,7 @@ public:
     void updateOffset(void);
     void showMap(void);
     void drawEcho(void);
+    void showMob(void);
 protected:
     int _tileSize = 100;
     Map &_map;

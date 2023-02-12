@@ -9,6 +9,8 @@
 
 #include "AMob.hpp"
 
+class Player;
+
 class Zombie : public AMob{
     public:
         Zombie(Map &map);
